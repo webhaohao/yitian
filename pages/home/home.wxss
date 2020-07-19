@@ -1,6 +1,38 @@
 .page{
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+    width: 100%;
+    height: 100vh;
 }
+.home-bg{
+  width: 100%;
+  height: 100%
+}
+.camera-box{
+  width: 556rpx;
+  height: 164rpx;
+  position: fixed;
+  bottom: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.camera-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.camera-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.camera-icon{
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 20rpx;
+}
+.camera-title{
+  font-size: 30rpx;
+}
+
