@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/options/options",
+    "pages/catList/catList",
     "pages/home/home"
   ],
   "window": {

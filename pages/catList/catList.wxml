@@ -1,0 +1,20 @@
+
+<view class="cat-list">
+    <view class="cat-upload-image">
+        <image class="" src="" mode="" lazy-load="false" binderror="" bindload="" />
+    </view>
+    <view class="cat-swiper">
+        <swiper>
+            <swiper-item class="" item-id="">
+                <view class="swiper-item-view">
+                    <image src="../../images/swiper-bg.png"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <image class="arrow arrow-left" src="../../images/arrow-left.png"/>
+        <image class="arrow arrow-right" src="../../images/arrow-right.png"/>    
+    </view>
+    <view class="camera-btn-fixed">
+            <image src="../../images/camera.png"></image>
+    </view>
+</view>

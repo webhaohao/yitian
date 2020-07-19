@@ -1,0 +1,11 @@
+
+<view class="options-page">
+  <view class="options">
+      <view class="option" wx:for="{{optionCards}}">
+          <image class="" src="{{'../../images/'+item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />     
+      </view>      
+  </view>
+  <view class="camera-btn-fixed">
+      <image src="../../images/camera.png"></image>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+.cat-upload-image{
+    height:540rpx;
+}
+.cat-swiper{
+    display:flex;
+    justify-content:center;
+    position: relative;
+    margin:30rpx 70rpx;
+}
+.cat-swiper swiper{
+    width:490rpx;
+    height:212rpx;
+}
+.cat-swiper swiper .swiper-item-view image{
+    width:490rpx;
+    height:212rpx;
+}
+.cat-swiper .arrow{
+    width:66rpx;
+    height:70rpx;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+.cat-swiper .arrow.arrow-left{
+    left:0;
+}
+.cat-swiper .arrow.arrow-right{
+    right:0;
+}
