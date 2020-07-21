@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/options/options",
-    "pages/catList/catList",
-    "pages/home/home"
+    "pages/catList/catList"  
   ],
   "window": {
   },

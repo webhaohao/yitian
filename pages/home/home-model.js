@@ -9,6 +9,16 @@ class Home extends Base{
     constructor(){
         super();
     }
+    uploadFileOpt(filePath){
+        wx.uploadFile({
+            url: `${this.baseRestUrl}/v1/cat/upload` ,
+            filePath,
+            name: 'files',
+            success (res) {
+              console.log(JSON.parse(res.data))
+            }
+        })
+    }
 };
 
 export {Home};
