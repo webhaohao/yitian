@@ -1,5 +1,6 @@
 import { Home } from './home-model.js';
-var home = new Home();
+let home = new Home();
+let app = getApp();
 Page({
   /**   * 页面的初始数据   */
   data: {
@@ -17,26 +18,15 @@ Page({
       success(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
-        home.uploadFileOpt(tempFilePaths[0]);
+        home.uploadFileOpt(tempFilePaths[0],(list)=>{
+             app.globalData.catList = list;
+             wx.navigateTo({
+               url: '../catList/catList'
+             }) 
+        });
       }
     });
   },
-
-  // 生成图片
-  // prodImageOpt() {
-  //   console.log("开始上传");
-  //   var that = this;
-  //   wx.canvasToTempFilePath({
-  //     canvasId: 'attendCanvasId',
-  //     success(res) {
-  //       // 上传图片
-  //       console.log(res.tempFilePath);
-  //       home.uploadFileOpt(res.tempFilePath);
-  //     },
-  //     complete(e) {
-  //     }
-  //   });
-  // },
   onLoad() {
   }
 })

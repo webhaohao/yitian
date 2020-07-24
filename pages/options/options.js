@@ -1,3 +1,4 @@
+
 Page({
   data: {
     optionCards:[
@@ -27,7 +28,8 @@ Page({
         }
     ]
   },
-  onLoad: function () {
+  onLoad: function (options) {
+
   },
 })
 

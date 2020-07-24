@@ -1,7 +1,7 @@
 
 <view class="cat-list">
     <view class="cat-upload-image">
-        <image class="" src="" mode="" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{catList.upload_url}}" mode="" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="cat-swiper">
         <swiper>
