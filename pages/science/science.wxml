@@ -1,0 +1,14 @@
+
+<view class="science-page">
+    <view class="cat-swiper">
+    <swiper current="{{swiperCurrent}}" indicator-active-color="#ebc247" indicator-color="rgba(255, 255, 255, .8)" indicator-dots="{{true}}" autoplay="{{true}}" bindchange="handelSwiperChange">
+        <block wx:for="{{scienceImgs}}">
+            <swiper-item class="" item-id="">
+                <view class="swiper-item-view">
+                    <image src="{{item}}" mode="widthFix"></image>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    </view>
+</view>

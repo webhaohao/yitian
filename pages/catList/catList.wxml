@@ -1,19 +1,27 @@
 
 <view class="cat-list">
     <view class="cat-upload-image">
-        <image class="" src="{{catList.upload_url}}" mode="" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{catList.upload_url}}" mode="heightFix" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="cat-swiper">
-        <swiper>
-            <swiper-item class="" item-id="">
-                <view class="swiper-item-view">
-                    <image src="../../images/swiper-bg.png"></image>
-                </view>
-            </swiper-item>
+        <swiper current="{{swiperCurrent}}" bindchange="handelSwiperChange">
+            <block wx:for="{{catList.result}}">
+                <swiper-item class="" item-id="">
+                    <view class="swiper-item-view">
+                        <image src="../../images/swiper-bg.png"></image>
+                        <text class="cat-name">{{item.name}}</text>
+                    </view>
+                </swiper-item>
+            </block>
         </swiper>
-        <image class="arrow arrow-left" src="../../images/arrow-left.png"/>
-        <image class="arrow arrow-right" src="../../images/arrow-right.png"/>    
+        <image class="arrow arrow-left" src="../../images/arrow-left.png" bindtap="prevSwiper"/>
+        <image class="arrow arrow-right" src="../../images/arrow-right.png" bindtap="nextSwiper"/>    
     </view>
+    <view class="fix-cat-see-fun">
+        <image src="../../images/tip.png" class="tip" animation="{{tipAnimation}}"></image>   
+        <image src="../../images/catsefun.png" class="cat-see-fun" animation="{{catseefunAni}}" bindtap="handleOptions"></image>
+    </view>
+      
     <view class="camera-btn-fixed">
             <image src="../../images/camera.png"></image>
     </view>

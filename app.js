@@ -3,7 +3,10 @@
 
 App({
   globalData:{
-      catList:[]
+      catList:[],
+      selectedCatInfo:{
+        
+      }
   },
   onLaunch: function () {
       // const token = new Token();

@@ -1,10 +1,10 @@
-
+let app =  getApp();  
 Page({
   data: {
     optionCards:[
         {
             img:'option-1.png',
-            path:''
+            path:'../science/science'
         },
         {
             img:'option-2.png',
@@ -28,9 +28,19 @@ Page({
         }
     ]
   },
-  onLoad: function (options) {
-
+  onLoad(options) {
+        console.log('selectedCat',app.globalData.selectedCatInfo)
   },
+  handleOptionClick(event){
+    console.log(event);
+    const {index} = event.currentTarget.dataset;
+    const {optionCards} = this.data;
+    const {path} = optionCards[index];
+    console.log(path);
+    path && wx.navigateTo({
+        url: `${path}?id=${app.globalData.selectedCatInfo.id}`
+    }) 
+  }
 })
 
 

@@ -1,0 +1,11 @@
+.science-page .cat-swiper{
+    width:100%;
+    height:539rpx;
+}
+.science-page .cat-swiper swiper{
+    height:100%;
+    width:100%;
+}
+.science-page .cat-swiper swiper image{
+    width:100%;
+}

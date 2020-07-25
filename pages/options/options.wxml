@@ -1,7 +1,7 @@
 
 <view class="options-page">
   <view class="options">
-      <view class="option" wx:for="{{optionCards}}">
+      <view class="option" wx:for="{{optionCards}}" data-index="{{index}}" bindtap="handleOptionClick">
           <image class="" src="{{'../../images/'+item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />     
       </view>      
   </view>
