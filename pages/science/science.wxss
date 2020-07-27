@@ -1,3 +1,8 @@
+.science-page{
+    background:url('https://catseefun.happyhao.top/assets/item_bg.png');
+    height:100vh;
+    background-size:cover;
+}
 .science-page .cat-swiper{
     width:100%;
     height:539rpx;
@@ -8,4 +13,9 @@
 }
 .science-page .cat-swiper swiper image{
     width:100%;
+}
+.science-page-text{
+    font-size:30rpx;
+    padding:97rpx 70rpx;
+    line-height:54rpx;
 }

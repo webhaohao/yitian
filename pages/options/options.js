@@ -1,35 +1,40 @@
 let app =  getApp();  
+import { takePictures } from '../../utils/utils';
+const baseUrl = 'https://catseefun.happyhao.top/assets/';
 Page({
   data: {
     optionCards:[
         {
-            img:'option-1.png',
+            img:`${baseUrl}option-1.png`,
             path:'../science/science'
         },
         {
-            img:'option-2.png',
+            img:`${baseUrl}option-2.png`,
+            path:'../story/story'
+        },
+        {
+            img:`${baseUrl}option-3.png`,
             path:''
         },
         {
-            img:'option-3.png',
+            img:`${baseUrl}option-4.png`,
             path:''
         },
         {
-            img:'option-4.png',
+            img:`${baseUrl}option-5.png`,
             path:''
         },
         {
-            img:'option-5.png',
-            path:''
-        },
-        {
-            img:'option-6.png',
+            img:`${baseUrl}option-6.png`,
             path:''
         }
     ]
   },
   onLoad(options) {
         console.log('selectedCat',app.globalData.selectedCatInfo)
+  },
+  takePictures(){
+    takePictures();
   },
   handleOptionClick(event){
     console.log(event);

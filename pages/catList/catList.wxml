@@ -22,7 +22,7 @@
         <image src="../../images/catsefun.png" class="cat-see-fun" animation="{{catseefunAni}}" bindtap="handleOptions"></image>
     </view>
       
-    <view class="camera-btn-fixed">
+    <view class="camera-btn-fixed" bindtap="takePictures">
             <image src="../../images/camera.png"></image>
     </view>
 </view>

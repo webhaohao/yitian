@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/options/options",
-    "pages/catList/catList"  
+    "pages/catList/catList",
+    "pages/story/story"  
   ],
   "window": {
   },

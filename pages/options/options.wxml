@@ -2,10 +2,10 @@
 <view class="options-page">
   <view class="options">
       <view class="option" wx:for="{{optionCards}}" data-index="{{index}}" bindtap="handleOptionClick">
-          <image class="" src="{{'../../images/'+item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />     
+          <image class="" src="{{item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />     
       </view>      
   </view>
-  <view class="camera-btn-fixed">
+  <view class="camera-btn-fixed" bindtap="takePictures">
       <image src="../../images/camera.png"></image>
   </view>
 </view>

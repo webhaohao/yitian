@@ -1,5 +1,5 @@
 
-<view class="science-page">
+<view class="story-page">
     <view class="cat-swiper">
     <swiper current="{{swiperCurrent}}" indicator-active-color="#ebc247" indicator-color="rgba(255, 255, 255, .8)" indicator-dots="{{true}}" autoplay="{{true}}" bindchange="handelSwiperChange">
         <block wx:for="{{scienceImgs}}">
@@ -10,13 +10,13 @@
             </swiper-item>
         </block>
     </swiper>
-    <view class="science-page-text"> 
-        <text class="" selectable="false" space="false" decode="false">
-               {{selectedCatInfo.science}} 
-        </text>
+    <view class="story-items"> 
+        <view class="story-item">
+                <view class="story-item-title">
+                     <text class="story-item-title-text">故事一</text>   
+                     <image src="../../images/story-item-1.png"></image>   
+                </view>
+        </view>    
     </view>
-    </view>
-    <view class="camera-btn-fixed" bindtap="takePictures">
-        <image src="../../images/camera.png"></image>
     </view>
 </view>

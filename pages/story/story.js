@@ -1,15 +1,11 @@
 let app =  getApp();  
-import { takePictures } from '../../utils/utils';
-import { Science } from './science-model.js';
+import { Science } from './story-model.js';
 let science = new Science();
 Page({
   data: {
     swiperCurrent:0
   },
-  takePictures(){
-    takePictures()
-  },
-  onLoad(options) {
+  onLoad: function (options) {
     console.log('selectedCat',app.globalData.selectedCatInfo)
     console.log(options);
     const {id} = options;

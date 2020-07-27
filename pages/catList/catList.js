@@ -1,4 +1,5 @@
 let app = getApp();
+import { takePictures } from '../../utils/utils';
 Page({
   data: {
     catList:[],
@@ -8,6 +9,9 @@ Page({
       this.setData({
         catList : app.globalData.catList
       })  
+  },
+  takePictures(){
+    takePictures()
   },
   onReady(){
     console.log(this.data.catList);
