@@ -1,3 +1,14 @@
-
-<view class="not-found-page">
+<view class="page">
+  <image class="notfound-bg" src="../../images/pink-bg.png"></image>
+  <view class="content-layer">
+    <image src="../../images/notfound.png" class="top-img"></image>
+    <view class="camera-box" bindtap="takePictures">
+      <image class="camera-bg" src="../../images/home/camera-bg.png"></image>
+      <view class="camera-content">
+        <image class="camera-icon" src="../../images/home/camera-icon.png"></image>
+        <view class="camera-title">拍照识猫</view>
+      </view>
+    </view>
+  </view>
+  <image class="bottom-img" src="../../images/bottom.png"></image>
 </view>

@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/options/options",
     "pages/catList/catList",
-    "pages/story/story"  
+    "pages/story/story" ,
+    "pages/notFound/notFound"
   ],
   "window": {
   },
