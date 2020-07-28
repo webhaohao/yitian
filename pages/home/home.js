@@ -4,13 +4,23 @@ Page({
   data: {
     attendSuccessImg: "",
     canvasImgUrl: '',
-    src: ""
+    src: "",
+    close:true
   },
   // 点击照相
   takePictures(){
     takePictures();
   },
+  onReady(){
+    setInterval(() => {
+      const {close} = this.data;
+      this.setData({
+          close:!close
+      })
+  }, 800);
+  },
   onLoad() {
+    
   }
 })
     

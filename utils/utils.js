@@ -33,10 +33,18 @@ const takePictures = ()=>{
       var tempFilePaths = res.tempFilePaths;
       home.uploadFileOpt(tempFilePaths[0],(list)=>{
            wx.hideLoading();
-           app.globalData.catList = list;
-           wx.navigateTo({
-             url: '../catList/catList'
-           }) 
+           const isHasCats =list.result.every(item=>item.name.includes('猫'));
+           if(isHasCats){
+            app.globalData.catList = list;
+            wx.navigateTo({
+              url: '../catList/catList'
+            }) 
+           } 
+           else{
+            wx.navigateTo({
+              url: '../notFound/notFound'
+            }) 
+           } 
       });
     }
   });

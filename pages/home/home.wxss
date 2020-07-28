@@ -1,6 +1,7 @@
 .page{
     width: 100%;
-    height: 100vh;
+    height: 100vh;  
+    position: relative;
 }
 .home-bg{
   width: 100%;
@@ -35,4 +36,66 @@
 .camera-title{
   font-size: 30rpx;
 }
+.eye{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+  position: absolute;
+  z-index:99;
+  top:205rpx;
+  left:160rpx;
+  overflow: hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
+}
+.eye-content{
+  background:#fff;
+  width:100%;
+  height:100%;
+  transform:rotate(20deg) translateY(-100%);
+  position: absolute;
+  border-radius:10rpx;
+}
+.eye-content-bottom{
+  animation:tobottom 1.5s infinite;
+}
+.eye-content-top{
+  animation:totop 1.5s infinite;
+}
+.eye-right{
+  top:287rpx;
+  left:440rpx;
+}
+.eye-left image{
+  width:77rpx;
+  height:41rpx;
+}
+.eye-right image{
+  width:75rpx;
+  height:45rpx;
+}
+.eye-close{
+  opacity:1;
+  /* animation:opacitychange 1.5s infinite 1.5s;
+  animation-fill-mode: forwards;
+  opacity:1; */
+}
 
+@keyframes tobottom{
+  from {transform: rotate(20deg) translateY(-100%);}
+  to {transform: rotate(20deg) translateY(-42%);}
+}
+@keyframes totop{
+  from {transform:rotate(20deg) translateY(100%);}
+  to {transform:rotate(20deg) translateY(42%);}
+}
+@keyframes opacitychange{
+  from {
+      opacity:0;
+  }
+  to{
+      opacity:1;
+  }
+}

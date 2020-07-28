@@ -4,7 +4,10 @@ Page({
   data: {
   },
   onLoad(options) {
-        console.log('selectedCat',app.globalData.selectedCatInfo)
+      //console.log('selectedCat',app.globalData.selectedCatInfo)
+  },
+  takePictures(){
+    takePictures();
   }
 })
 

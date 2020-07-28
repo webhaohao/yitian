@@ -1,5 +1,12 @@
 <view class="page">
   <image class="home-bg" src="../../images/home/home-bg.png"></image>
+  <!--animate 动画效果-->
+  <view class="eye-left eye" wx:if="{{close}}">
+    <image src="../../images/eye-left.png" class="eye-close"></image>
+  </view>
+  <view class="eye-right eye" wx:if="{{close}}">
+    <image src="../../images/eye-right.png" class="eye-close"></image>
+  </view>
   <view class="camera-box" bindtap="takePictures">
     <image class="camera-bg" src="../../images/home/camera-bg.png"></image>
     <view class="camera-content">
