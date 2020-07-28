@@ -10,8 +10,6 @@ Page({
     takePictures()
   },
   onLoad(options) {
-    console.log('selectedCat',app.globalData.selectedCatInfo)
-    console.log(options);
     const {id} = options;
     wx.showLoading({title:'加载中...'})
     science.getScience(id,(result)=>{

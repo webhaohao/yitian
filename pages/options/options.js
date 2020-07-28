@@ -42,6 +42,9 @@ Page({
     const {optionCards} = this.data;
     const {path} = optionCards[index];
     console.log(path);
+    if(path ===""){
+        
+    }
     path && wx.navigateTo({
         url: `${path}?id=${app.globalData.selectedCatInfo.id}`
     }) 

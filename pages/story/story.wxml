@@ -11,12 +11,18 @@
         </block>
     </swiper>
     <view class="story-items"> 
-        <view class="story-item">
-                <view class="story-item-title">
-                     <text class="story-item-title-text">故事一</text>   
-                     <image src="../../images/story-item-1.png"></image>   
-                </view>
+        <view class="story-item" wx:for="{{story}}">
+            <view class="story-item-title">
+                <text class="story-item-title-text">故事{{mapChinese[index]}}</text>   
+                <image src="{{item.imgPath}}"></image>   
+            </view>
+            <view class="story-item-content"> 
+               {{item.content}}
+            </view>
         </view>    
     </view>
+    </view>
+    <view class="camera-btn-fixed" bindtap="takePictures">
+            <image src="../../images/camera.png"></image>
     </view>
 </view>
