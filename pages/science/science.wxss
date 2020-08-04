@@ -1,6 +1,6 @@
 .science-page{
     background:url('https://catseefun.happyhao.top/assets/item_bg.png');
-    height:100vh;
+    min-height:100vh;
     background-size:cover;
 }
 .science-page .cat-swiper{

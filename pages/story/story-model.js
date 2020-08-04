@@ -5,13 +5,22 @@
 // var Base = require('../../utils/base.js').base;
 import {Base} from '../../utils/base.js';
 
-class Science extends Base{
+class Story extends Base{
     constructor(){
         super();
     }
-    getScience(id,callback){
+    getStoryImgs(id,callback){
         var param={
-            url: `/v1/cat/getScienceDetail/${id}`,
+            url: `/v1/cat/getStoryImgs/${id}`,
+            sCallback:function(data){
+                callback && callback(data);
+            }
+        };
+        this.request(param);
+    }
+    getStoryDetail(id,callback){
+        var param={
+            url: `/v1/cat/getStoryDetail/${id}`,
             sCallback:function(data){
                 callback && callback(data);
             }
@@ -20,4 +29,4 @@ class Science extends Base{
     }
 };
 
-export {Science};
+export {Story};

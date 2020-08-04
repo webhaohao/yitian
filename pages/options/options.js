@@ -43,7 +43,11 @@ Page({
     const {path} = optionCards[index];
     console.log(path);
     if(path ===""){
-        
+      wx.showToast({
+        title: '敬请期待',
+        icon: 'none',
+        duration: 2000
+      })
     }
     path && wx.navigateTo({
         url: `${path}?id=${app.globalData.selectedCatInfo.id}`
