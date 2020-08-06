@@ -5,7 +5,14 @@
 }
 .home-bg{
   width: 100%;
-  height: 100%
+  height: 100%;
+}
+.home-bg-change{
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
 }
 .camera-box{
   width: 556rpx;
@@ -19,6 +26,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index:99;
 }
 .camera-content{
   position: absolute;
@@ -27,6 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index:199;
 }
 .camera-icon{
   width: 58rpx;
@@ -67,6 +76,18 @@
 .eye-right{
   top:287rpx;
   left:440rpx;
+}
+.eye-right.isPhoneX{
+  top:365rpx;
+  left:444rpx;
+}
+.eye-left.isPhoneX{
+  top:266rpx;
+  left:163rpx;
+}
+.eye.isPhoneX{
+  width:102rpx;
+  height:106rpx;
 }
 .eye-left image{
   width:77rpx;
