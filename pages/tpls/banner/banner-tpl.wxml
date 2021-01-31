@@ -1,0 +1,9 @@
+<!--banner位-->
+<template name="banner">
+    <view class="banner">
+        <image
+        src="../../images/banner.png"
+        lazy-load="false">
+        </image>
+    </view> 
+</template>

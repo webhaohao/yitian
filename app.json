@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/options/options",
-    "pages/catList/catList",
-    "pages/story/story" ,
-    "pages/notFound/notFound"
+    "pages/home/home"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
   "window": {
   },
   "networkTimeout": {

@@ -1,0 +1,12 @@
+.banner{
+  position: fixed;
+  bottom:18rpx;
+  width:100%;
+  z-index:999;
+  padding:0 22rpx;
+  box-sizing: border-box;
+}
+.banner image{
+   width:100%;
+   height:140rpx;  
+}

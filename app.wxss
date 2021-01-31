@@ -8,14 +8,3 @@
   background-color: #fff;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft Yahei";
 }
-.camera-btn-fixed{
-  position: fixed;
-  bottom:66rpx;
-  left:0;
-  width:121rpx;
-  height:121rpx;
-}
-.camera-btn-fixed image{
- width:100%;
- height:100%;  
-}

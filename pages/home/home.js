@@ -1,45 +1,55 @@
-import { takePictures } from '../../utils/utils';
+
 Page({
   /**   * 页面的初始数据   */
   data: {
-    attendSuccessImg: "",
-    canvasImgUrl: '',
-    src: "",
-    close:true,
-    isPhoneX:false
-  },
-  // 点击照相
-  takePictures(){
-    takePictures();
+    latitude: 24.774812,
+    longitude: 110.492977,
+    markers: [
+      {
+        iconPath: "/images/restaurant.png",
+        id: 4,
+        latitude: 24.774812,
+        longitude:  110.492977,
+        width: 30,
+        height: 30
+      }
+    ],
   },
   onReady(){
-    wx.getSystemInfo({
-      success:(res)=>{
-        console.log(res);
-        // 根据 model 进行判断
-        if(res.model.search('iPhone X') !=-1 || res.model.search('iPhone 11') !=-1 ) {
-            this.setData({
-              isPhoneX:true
-            })
-        }
-      }
-    })
-    setInterval(() => {
-      const {close} = this.data;
-      this.setData({
-          close:!close
-      })
-    }, 800);
   },
-   // 分享效果
-   onShareAppMessage () {
+
+  onLoad() {
+    this.mapCtx = wx.createMapContext('mapId')
+    // this.getUserLocation();
+    // this.mapCtx.on('markerClusterClick', res =>{
+    //   console.log('markerClusterClick', res)
+    // })
+
+    // 使用默认聚合效果时可注释下一句
+    // this.bindEvent()
+  },
+  getUserLocation(){
+    wx.getLocation({
+      type: 'wgs84',
+      success:(res)=> {
+        // const latitude = res.latitude
+        // const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+
+      }
+     })
+  },
+    // 分享效果
+    onShareAppMessage () {
     return {
-      title: `益趣识猫`,
+      title: `益田文创`,
       path: `pages/home/home`
     }
-  },
-  onLoad() {
-    
   }
 })
     
