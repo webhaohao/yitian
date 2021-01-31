@@ -20,7 +20,7 @@ Page({
 
   onLoad() {
     this.mapCtx = wx.createMapContext('mapId')
-    // this.getUserLocation();
+    this.getUserLocation();
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
     // })

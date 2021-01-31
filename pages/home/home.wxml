@@ -29,6 +29,7 @@
         latitude="{{latitude}}"
         longitude="{{longitude}}"
         markers="{{markers}}"
+        show-location
         bindmarkertap="onMarkerTap"
         bindcallouttap="onCalloutTap"
         bindlabeltap="onLabelTap"
