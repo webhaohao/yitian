@@ -6,6 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \catseefun\pages\home\home.wxml
 -->
+<!--test-->
 <import src="../tpls/banner/banner-tpl.wxml"/>
 
 <view class="page">
@@ -23,7 +24,7 @@
         </image>
     </view>
     <template is="banner"></template>
-    <map 
+    <map
         id="mapId"
         class="map"
         latitude="{{latitude}}"
