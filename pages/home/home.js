@@ -4,6 +4,7 @@ Page({
   data: {
     latitude: 24.774812,
     longitude: 110.492977,
+    subkey:'DT5BZ-4JO6P-GLND5-LJDT5-ID653-TVF4Z',
     markers: [
       {
         iconPath: "/images/restaurant.png",
@@ -20,7 +21,7 @@ Page({
 
   onLoad() {
     this.mapCtx = wx.createMapContext('mapId')
-    this.getUserLocation();
+    // this.getUserLocation();
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
     // })

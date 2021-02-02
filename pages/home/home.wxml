@@ -29,6 +29,9 @@
         latitude="{{latitude}}"
         longitude="{{longitude}}"
         markers="{{markers}}"
+        subkey="{{subkey}}"
+        layer-style="1"
+        scale="{{20}}"
         show-location
         bindmarkertap="onMarkerTap"
         bindcallouttap="onCalloutTap"
