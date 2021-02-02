@@ -15,7 +15,7 @@
     </view>
     <view class="top-menu">
         <image src="../../images/scenic.png"></image>
-        <image src="../../images/list_btn.png"></image>
+        <image src="../../images/list_btn.png" bindtap="jumpList"></image>
     </view>
     <view class="location-box">
         <image
@@ -23,6 +23,17 @@
           lazy-load="false">
         </image>
     </view>
+    <view class="marker-list-view">
+        <image src="../../images/image_top.png" class="pos-img pos-img-top"></image>
+        <image src="../../images/image_top.png" class="pos-img pos-img-bottom"></image>
+        <scroll-view scroll-y="true" class="marker-list-scroll"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <block wx:for="{{locationTypeList}}" wx:key="*this">
+            <view class="scroll-view-item">
+                <image src="{{item.path}}"></image>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
     <template is="banner"></template>
     <map
         id="mapId"
@@ -37,5 +48,25 @@
         bindmarkertap="onMarkerTap"
         bindcallouttap="onCalloutTap"
         bindlabeltap="onLabelTap"
-    ></map>
+    >
+    <cover-view slot="callout">
+        <block wx:for="{{markers}}" wx:key="*this">
+          <cover-view  class="customCallout" marker-id="{{item.id}}" >
+            <cover-view class="customCallout-image-wrapper">
+                <cover-image class="customCallout-image" src="{{item.image}}"></cover-image>
+            </cover-view>      
+            <cover-view class="customCallout-bottom">
+                <cover-view class="customCallout-bottom-btns">
+                        <cover-view class="btn" aria-detail="detail" aria-role="button">
+                            查看详情
+                        </cover-view>
+                        <cover-view class="btn">
+                            到这里去
+                        </cover-view>
+                </cover-view>
+            </cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+    </map>
 </view>

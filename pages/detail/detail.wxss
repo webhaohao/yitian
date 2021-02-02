@@ -1,0 +1,16 @@
+@import "../tpls/banner/banner-tpl.wxss";
+.detail-info{
+    background:#e5e5e5;
+    flex:1;
+}
+.detail{
+    display: flex;
+    flex-direction:column;
+    height:100vh;
+}
+.detail-image{
+    height:465rpx;
+}
+.detail-image image{
+    height:100%;
+}

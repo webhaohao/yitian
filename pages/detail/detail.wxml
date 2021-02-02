@@ -1,0 +1,12 @@
+<import src="../tpls/banner/banner-tpl.wxml"/>
+<view class="page">
+    <view class="detail">
+        <view class="detail-image">
+            <image src="/images/mark-bg-1.png"></image>   
+        </view>
+        <view class="detail-info">
+
+        </view>
+    </view>
+    <template is="banner"></template>
+</view>

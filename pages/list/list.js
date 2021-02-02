@@ -1,0 +1,28 @@
+Page({
+    data:{
+      list:[
+          {
+            path:'/images/list.png',
+            title:'百乐桥'
+          },
+          {
+            path:'/images/list.png',
+            title:'渔歌文化广场'
+          },
+          {
+            path:'/images/list.png',
+            title:'益田西街主牌坊门'
+          }
+      ]
+    },
+    onLoad(){
+
+    },
+    onReady(){
+    },
+    handleDetail(){
+        wx.navigateTo({
+            url:'/pages/detail/detail'
+        })  
+    }
+})

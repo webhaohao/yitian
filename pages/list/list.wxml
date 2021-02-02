@@ -1,0 +1,20 @@
+<view class="page">
+    <view class="list">
+        <block wx:for="{{list}}" wx:key="*this" >
+            <view class="item">
+                <view class="item-image">
+                    <image src="{{item.path}}"></image>
+                </view>
+                <view class="item-block">
+                    <view class="item-title">
+                        <view class="item-title-text">{{item.title}}</view>
+                        <image src="/images/title_bg.png"></image>
+                    </view>
+                    <view class="item-back" bindtap="handleDetail">
+                        <image src="/images/back.png"></image>
+                    </view>    
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
