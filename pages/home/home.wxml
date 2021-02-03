@@ -11,7 +11,10 @@
 
 <view class="page">
     <view class="search-box">
-        <image src="../../images/search.png"></image>
+        <image src="../../images/search.png" bindtap="toggleSearch"></image>
+        <div class="search-input {{ isShowSearch ? 'show-search' : 'hide-search'}}" >
+          <input placeholder="请输入搜索的内容"/>
+        </div>
     </view>
     <view class="top-menu">
         <image src="../../images/scenic.png"></image>
@@ -28,7 +31,7 @@
         <image src="../../images/image_top.png" class="pos-img pos-img-bottom"></image>
         <scroll-view scroll-y="true" class="marker-list-scroll"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <block wx:for="{{locationTypeList}}" wx:key="*this">
-            <view class="scroll-view-item">
+            <view class="scroll-view-item" data-type="{{item.type}}" bindtap="handleTypeList">
                 <image src="{{item.path}}"></image>
             </view>
           </block>

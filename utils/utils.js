@@ -3,51 +3,42 @@
  */
 
 // var Base = require('../../utils/base.js').base;
-import {Base} from './base.js';
-
-class Home extends Base{
-    constructor(){
-        super();
-    }
-    uploadFileOpt(filePath,callback){
-        wx.uploadFile({
-            url: `${this.baseRestUrl}/v1/cat/upload` ,
-            filePath,
-            name: 'files',
-            success (res) {
-              callback(JSON.parse(res.data))
-            }
-        })
-    }
-};
-let home = new Home();
-let app = getApp();
-const takePictures = ()=>{
-  wx.chooseImage({
-    count: 1, // 默认9
-    sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-    // 可以指定来源是相册还是相机，默认二者都有
-    success(res) {
-      wx.showLoading({title:'识别中...'})
-      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-      var tempFilePaths = res.tempFilePaths;
-      home.uploadFileOpt(tempFilePaths[0],(list)=>{
-           wx.hideLoading();
-           const isHasCats =list.result.every(item=>item.name.includes('猫'));
-           if(isHasCats){
-            app.globalData.catList = list;
-            wx.navigateTo({
-              url: '../catList/catList'
-            }) 
-           } 
-           else{
-            wx.navigateTo({
-              url: '../notFound/notFound'
-            }) 
-           } 
-      });
-    }
-  });
+const IsPtInPoly = (aLat, aLon, pointList)=> {
+  /* 
+  :param aLon: double 经度 
+  :param aLat: double 纬度 
+  :param pointList: list [{latitude: 22.22, longitude: 113.113}...] 多边形点的顺序需根据顺时针或逆时针，不能乱 
+  */
+  var iSum = 0  
+  var iCount = pointList.length
+    
+  if(iCount < 3) {
+      return false 
+  }
+  for(var i = 0; i < iCount;i++) {
+      var pLat1 = pointList[i].latitude  
+      var pLon1 = pointList[i].longitude
+      if(i == iCount - 1) {
+          var pLat2 = pointList[0].latitude
+          var pLon2 = pointList[0].longitude
+      } else {
+          var pLat2 = pointList[i + 1].latitude  
+          var pLon2 = pointList[i + 1].longitude
+      }
+      if (((aLat >= pLat1) && (aLat < pLat2)) || ((aLat>=pLat2) && (aLat < pLat1))) {
+          if (Math.abs(pLat1 - pLat2) > 0) {
+              var pLon = pLon1 - ((pLon1 - pLon2) * (pLat1 - aLat)) / (pLat1 - pLat2);  
+              if(pLon < aLon) {
+                  iSum += 1 
+              }
+          }
+      } 
+  }
+  if(iSum % 2 != 0) {
+      return true  
+  }else {
+      return false 
+  }  
 }
 
-export {takePictures}
+export { IsPtInPoly };
