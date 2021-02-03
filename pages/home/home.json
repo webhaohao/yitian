@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "yitian",
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "my-modal": "/components/modal/modal"
+  }
 }

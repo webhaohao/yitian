@@ -13,4 +13,11 @@
 }
 .detail-image image{
     height:100%;
+    width:100%;
+}
+.detail-info-text{
+    padding:38rpx 68rpx;
+    box-sizing: border-box;
+    line-height:1.5;
+    font-size:30rpx;
 }

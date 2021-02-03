@@ -17,7 +17,7 @@
         </div>
     </view>
     <view class="top-menu">
-        <image src="../../images/scenic.png"></image>
+        <!-- <image src="../../images/scenic.png"></image> -->
         <image src="../../images/list_btn.png" bindtap="jumpList"></image>
     </view>
     <view class="location-box">
@@ -32,7 +32,7 @@
         <scroll-view scroll-y="true" class="marker-list-scroll"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <block wx:for="{{locationTypeList}}" wx:key="*this">
             <view class="scroll-view-item" data-type="{{item.type}}" bindtap="handleTypeList">
-                <image src="{{item.path}}"></image>
+                <image class="{{item.active ? '' : 'filter'}}" src="{{item.path}}"></image>
             </view>
           </block>
         </scroll-view>
@@ -52,24 +52,12 @@
         bindcallouttap="onCalloutTap"
         bindlabeltap="onLabelTap"
     >
-    <cover-view slot="callout">
-        <block wx:for="{{markers}}" wx:key="*this">
-          <cover-view  class="customCallout" marker-id="{{item.id}}" >
-            <cover-view class="customCallout-image-wrapper">
-                <cover-image class="customCallout-image" src="{{item.image}}"></cover-image>
-            </cover-view>      
-            <cover-view class="customCallout-bottom">
-                <cover-view class="customCallout-bottom-btns">
-                        <cover-view class="btn" aria-detail="detail" aria-role="button">
-                            查看详情
-                        </cover-view>
-                        <cover-view class="btn">
-                            到这里去
-                        </cover-view>
-                </cover-view>
-            </cover-view>
-          </cover-view>
-        </block>
-      </cover-view>
     </map>
+    <my-modal 
+      showModal="{{showModal}}" 
+      modalInfo="{{modalInfo}}"  
+      bind:onCancel="onCancel"
+      bind:handleDetail="handleDetail"
+    >
+    </my-modal>
 </view>

@@ -5,7 +5,11 @@
             <image src="/images/mark-bg-1.png"></image>   
         </view>
         <view class="detail-info">
-
+            <scroll-view class="detail-info-text">
+                <p>
+                    每个有历史的城市，都有一段特色的街区，它承载者着名人掌故，商贾繁华，是这座城市历史的缩影，代表着一方地域的生活方式。
+                </p>
+            </scroll-view>
         </view>
     </view>
     <template is="banner"></template>

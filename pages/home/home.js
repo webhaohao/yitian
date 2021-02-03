@@ -7,32 +7,40 @@ Page({
     longitude: 110.492977,
     subkey:'DT5BZ-4JO6P-GLND5-LJDT5-ID653-TVF4Z',
     markers:[],
+    showModal:false,
     isShowSearch:false,
+    modalInfo:{},
     locationTypeList:[
       {
-        path:'/images/restaurant_icon.png',
-        type:'restaurant'
+        path:'/images/restaurant.png',
+        type:'restaurant',
+        active:false
       },
       {
-        path:'/images/wc.png',
-        type:'wc'
+        path:'/images/wc_marker.png',
+        type:'wc',
+        active:false
       },
       {
-        path:'/images/tea.png',
-        type:'tea'
+        path:'/images/tea_marker.png',
+        type:'tea',
+        active:false
       },
       {
-        path:'/images/supermarket.png',
-        type:'supermarket'
+        path:'/images/supermarket_marker.png',
+        type:'supermarket',
+        active:false
       },
-      {
-        path:'/images/root.png',
-        type:'root'
-      },
-      {
-        path:'/images/mdownload.png',
-        type:'mdownload'
-      }
+      // {
+      //   path:'/images/root.png',
+      //   type:'root',
+      //   active:false
+      // },
+      // {
+      //   path:'/images/mdownload.png',
+      //   type:'mdownload',
+      //   active:false
+      // }
     ] 
   },
   default_markers:[
@@ -60,11 +68,6 @@ Page({
       longitude: 110.493118,
       width: 30,
       height: 30,
-      customCallout: {
-        anchorY: 0,
-        anchorX: 20,
-        display: 'BYCLICK',
-      },
     },
     {
       iconPath: "/images/tea_marker.png",
@@ -74,12 +77,7 @@ Page({
       latitude: 24.774992,
       longitude:  110.492871,
       width: 30,
-      height: 30,
-      customCallout: {
-        anchorY: 0,
-        anchorX: 20,
-        display: 'BYCLICK',
-      },
+      height: 30
     },
     {
       iconPath: "/images/supermarket_marker.png",
@@ -121,24 +119,36 @@ Page({
       isShowSearch:!isShowSearch
     })
   },
+  onCancel(){
+    this.setData({
+      showModal:false
+    })
+  },
   jumpList(){
     wx.navigateTo({
       url:'/pages/list/list'
     })
   },
   handleTypeList(event){
-    console.log('markers',markers);
-    console.log(event);
+    
     const {type} = event.currentTarget.dataset;
-    const {default_markers} = this;
+    const {locationTypeList} = this.data;
+    const index = locationTypeList.findIndex(item=>item.type === type);
+    locationTypeList[index].active = !locationTypeList[index].active;
+    const act_type_list = locationTypeList.filter(item=>item.active === true).map(item=>item.type);
+    const { default_markers } = this;
     const markers = this.copyArr(default_markers);
-    const _markers = markers.filter(item => item.type === type);
+    const _markers = markers.filter(item =>act_type_list.includes(item.type));
     this.setData({
-      markers:_markers
+      markers:_markers,
+      locationTypeList
     })
   },
-  onHandleDetail(){
-    console.log('detail');
+  handleDetail(event){
+    const {detail} = event;
+    wx.navigateTo({
+      url:`/pages/detail/detail?id=${detail}`
+  })  
   },
   copyArr(arr){
     return JSON.parse(JSON.stringify(arr));
@@ -164,8 +174,14 @@ Page({
      })
   },
   onMarkerTap(event){
-    console.log(event);
-
+    const {markerId} = event.detail;
+    const {default_markers} = this;
+    const modalInfo = default_markers.find(item=>item.id === markerId);
+    console.log('modalInfo',modalInfo);
+    this.setData({
+      showModal:true,
+      modalInfo
+    })
   },
   // 分享效果
   onShareAppMessage () {

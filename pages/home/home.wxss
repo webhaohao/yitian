@@ -125,11 +125,15 @@
 .scroll-view-item{
     display:flex;
     justify-content:center;
-    padding:50rpx 0rpx;
+    padding:25rpx 0rpx;
 }
 .scroll-view-item image{
-    width:57rpx;
-    height:57rpx;
+    width:75rpx;
+    height:75rpx;
+}
+.scroll-view-item image.filter{
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
 }
 .search-input.hide-search{
     width: 0rpx;
