@@ -10,6 +10,22 @@ Page({
     showModal:false,
     isShowSearch:false,
     modalInfo:{},
+    toggleRoutes: false,
+    userLatitude:'',
+    userLongitude:'',
+    scale:20,
+    polylineStyle: {
+         
+    },
+    route: [
+      {
+        points: [],
+        color: "#FFFFFF",
+        width: 4,
+        borderColor: "#1296DB",
+        borderWidth: 1
+      }
+    ],
     locationTypeList:[
       {
         path:'/images/restaurant.png',
@@ -52,12 +68,7 @@ Page({
       latitude: 24.774812,
       longitude:  110.492977,
       width: 30,
-      height: 30,
-      customCallout: {
-        anchorY: 0,
-        anchorX: 20,
-        display: 'BYCLICK',
-      },
+      height: 30
     },
     {
       iconPath: "/images/wc_marker.png",
@@ -104,8 +115,6 @@ Page({
 
   onLoad() {
     this.mapCtx = wx.createMapContext('mapId')
-    
-    // this.getUserLocation();
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
     // })
@@ -130,7 +139,6 @@ Page({
     })
   },
   handleTypeList(event){
-    
     const {type} = event.currentTarget.dataset;
     const {locationTypeList} = this.data;
     const index = locationTypeList.findIndex(item=>item.type === type);
@@ -143,33 +151,70 @@ Page({
       markers:_markers,
       locationTypeList
     })
+    this.includePoints(100);
+  },
+  includePoints(padding) {
+    this.mapCtx.includePoints({
+      padding: [padding, padding, padding, padding],
+      points: this.data.markers
+    });
   },
   handleDetail(event){
     const {detail} = event;
     wx.navigateTo({
       url:`/pages/detail/detail?id=${detail}`
-  })  
+    })  
+  },
+  goHere(event){
+    const {detail:id} = event;
+    const currentMarker = this.default_markers.find(item=>item.id === id);
+    console.log(currentMarker);
+    const {latitude,longitude} = currentMarker;
+    const {userLongitude,userLatitude} = this.data;
+    if(userLongitude && userLatitude){
+      this.drawPolyline(userLatitude,userLongitude,latitude, longitude);
+    }
+    else{
+        this.getUserLocation(({userLatitude,userLongitude})=>{
+          this.drawPolyline(userLatitude,userLongitude,latitude, longitude);
+        })
+    }
+  },
+  drawPolyline(userLatitude,userLongitude,latitude, longitude){
+    this.setData({
+      toggleRoutes:true,
+      scale:5,
+      "route[0].points": [
+        {
+          latitude:userLatitude,
+          longitude:userLongitude
+        },
+        {
+          latitude,
+          longitude,
+        }
+      ]
+    })
   },
   copyArr(arr){
     return JSON.parse(JSON.stringify(arr));
   },
   onCalloutTap(event){
-    console.log(event);
-    console.log(123);
   },
-  getUserLocation(){
+  getUserLocation(callBack){
     wx.getLocation({
       type: 'wgs84',
       success:(res)=> {
-        // const latitude = res.latitude
-        // const longitude = res.longitude
-        const speed = res.speed
-        const accuracy = res.accuracy
+        // const speed = res.speed
+        // const accuracy = res.accuracy
+        const userLatitude = res.latitude;
+        const userLongitude = res.longitude
         this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude,
+          userLatitude,
+          userLongitude
         })
-
+        // this.mapCtx.moveToLocation();
+        callBack && callBack({userLatitude,userLongitude});
       }
      })
   },
@@ -177,11 +222,22 @@ Page({
     const {markerId} = event.detail;
     const {default_markers} = this;
     const modalInfo = default_markers.find(item=>item.id === markerId);
-    console.log('modalInfo',modalInfo);
     this.setData({
       showModal:true,
       modalInfo
     })
+  },
+  moveToLocation(){
+    const {userLongitude,userLatitude} = this.data;
+    if(userLongitude && userLatitude){
+      this.mapCtx.moveToLocation();
+    }
+    else{
+      this.getUserLocation(()=>{
+        this.mapCtx.moveToLocation();
+      });
+    }
+    
   },
   // 分享效果
   onShareAppMessage () {

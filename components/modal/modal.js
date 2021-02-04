@@ -36,17 +36,17 @@ Component({
        * 对话框取消按钮点击事件
        */
       onHandleDetail: function (event) {
-        console.log('event',event);
         const { id } = event.currentTarget.dataset;
-        console.log('id',id);
         this.triggerEvent('onCancel', false, {});
         this.triggerEvent('handleDetail', id, {});
       },
       /**
        * 对话框确认按钮点击事件
        */
-      onConfirm: function () {
-        this.hideModal();
+      goHere: function (event) {
+        const { id } = event.currentTarget.dataset;
+        this.triggerEvent('onCancel', false, {});
+        this.triggerEvent('goHere', id, {});
       }
     }
    

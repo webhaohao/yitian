@@ -20,7 +20,7 @@
         <!-- <image src="../../images/scenic.png"></image> -->
         <image src="../../images/list_btn.png" bindtap="jumpList"></image>
     </view>
-    <view class="location-box">
+    <view class="location-box" bindtap="moveToLocation">
         <image
           src="../../images/location_btn.png"
           lazy-load="false">
@@ -45,8 +45,9 @@
         longitude="{{longitude}}"
         markers="{{markers}}"
         subkey="{{subkey}}"
+        polyline="{{toggleRoutes ? route : ''}}"
         layer-style="1"
-        scale="{{20}}"
+        scale="{{scale}}"
         show-location
         bindmarkertap="onMarkerTap"
         bindcallouttap="onCalloutTap"
@@ -58,6 +59,7 @@
       modalInfo="{{modalInfo}}"  
       bind:onCancel="onCancel"
       bind:handleDetail="handleDetail"
+      bind:goHere="goHere"
     >
     </my-modal>
 </view>
