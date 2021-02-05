@@ -146,7 +146,7 @@ Page({
     const act_type_list = locationTypeList.filter(item=>item.active === true).map(item=>item.type);
     const { default_markers } = this;
     const markers = this.copyArr(default_markers);
-    const _markers = markers.filter(item =>act_type_list.includes(item.type));
+    const _markers = markers.filter(item =>act_type_list.includes(item.type)) || [];
     this.setData({
       markers:_markers,
       locationTypeList
