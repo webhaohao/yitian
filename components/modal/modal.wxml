@@ -12,6 +12,6 @@
   </view>
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">到这里去</view>
+    <view class="btn-confirm" bindtap="goHere" data-id="{{modalInfo.id}}">到这里去</view>
   </view>
 </view>
