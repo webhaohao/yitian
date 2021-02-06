@@ -99,11 +99,86 @@ Page({
       longitude:  110.493182,
       width: 30,
       height: 30,
-      // customCallout: {
-      //   anchorY: 0,
-      //   anchorX: 20,
-      //   display: 'BYCLICK',
-      // },
+    },
+    {
+      iconPath: "/images/guxitai.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 5,
+      latitude: 24.774996,
+      longitude:  110.493182,
+      width: 30,
+      height: 30,
+    },
+    {
+      iconPath: "/images/baileqiao.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 6,
+      latitude: 24.774071,
+      longitude:  110.493574,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/lianxinqiao.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 7,
+      latitude: 24.774281,
+      longitude:  110.492168,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/xijieta.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 8,
+      latitude: 24.774953,
+      longitude: 110.493552,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/yuge.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 9,
+      latitude: 24.774315,
+      longitude: 110.492908,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/jiashan.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 10,
+      latitude: 24.774666,
+      longitude: 110.492769,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/paifang.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 11,
+      latitude: 24.773833,
+      longitude: 110.493938,
+      width:40,
+      height:40
+    },
+    {
+      iconPath: "/images/zhuangyuanmen.png",
+      image:'/images/mark-bg-1.png',
+      type:'scenic',
+      id: 12,
+      latitude: 24.774227,
+      longitude: 110.492662,
+      width:40,
+      height:40
     }
   ],
   onReady(){
@@ -144,9 +219,10 @@ Page({
     const index = locationTypeList.findIndex(item=>item.type === type);
     locationTypeList[index].active = !locationTypeList[index].active;
     const act_type_list = locationTypeList.filter(item=>item.active === true).map(item=>item.type);
+    const _act_type_list = [...act_type_list, 'scenic'];
     const { default_markers } = this;
     const markers = this.copyArr(default_markers);
-    const _markers = markers.filter(item =>act_type_list.includes(item.type)) || [];
+    const _markers = markers.filter(item => _act_type_list.includes(item.type)) || [];
     this.setData({
       markers:_markers,
       locationTypeList
@@ -154,9 +230,10 @@ Page({
     this.includePoints(100);
   },
   includePoints(padding) {
+    const {markers} = this.data;
     this.mapCtx.includePoints({
       padding: [padding, padding, padding, padding],
-      points: this.data.markers
+      points: markers.filter(item=> item.type !== 'scenic')
     });
   },
   handleDetail(event){

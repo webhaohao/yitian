@@ -2,6 +2,7 @@
 .detail-info{
     background:#e5e5e5;
     flex:1;
+    position:relative;
 }
 .detail{
     display: flex;
@@ -10,6 +11,20 @@
 }
 .detail-image{
     height:465rpx;
+    position:relative;
+}
+.detail-image .title{
+    position: absolute;
+    width:100%;
+    height:98rpx;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#10234A;
+    font-size:40rpx;
+    background:rgba(255,255,255,0.7);
+    bottom:0;
+    left:0;
 }
 .detail-image image{
     height:100%;
@@ -18,6 +33,16 @@
 .detail-info-text{
     padding:38rpx 68rpx;
     box-sizing: border-box;
-    line-height:1.5;
-    font-size:30rpx;
+    line-height:45rpx;
+    font-size:27rpx;
+    color:#515151;
+}
+.detail-bottom-image{
+    position:absolute;
+    bottom:170rpx;
+    width:615rpx;
+    height:418rpx;
+    left:50%;
+    transform:translate(-50%,0);
+    opacity:.8;
 }

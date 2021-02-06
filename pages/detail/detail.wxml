@@ -2,14 +2,18 @@
 <view class="page">
     <view class="detail">
         <view class="detail-image">
-            <image src="/images/mark-bg-1.png"></image>   
+            <image src="/images/detail.png"></image>   
+            <view class="title">古戏台</view>
         </view>
         <view class="detail-info">
-            <scroll-view class="detail-info-text">
-                <p>
-                    每个有历史的城市，都有一段特色的街区，它承载者着名人掌故，商贾繁华，是这座城市历史的缩影，代表着一方地域的生活方式。
-                </p>
+            <scroll-view scroll-y="{{true}}">
+                <view class="detail-info-text">
+                    <p>
+                        每个有历史的城市，都有一段特色的街区，它承载者着名人掌故，商贾繁华，是这座城市历史的缩影，代表着一方地域的生活方式。
+                    </p>
+                </view>
             </scroll-view>
+            <image class="detail-bottom-image" src="/images/detail_center_bg.png"></image>
         </view>
     </view>
     <template is="banner"></template>

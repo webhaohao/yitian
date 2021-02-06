@@ -11,7 +11,7 @@ class Base {
     }
 
     //http 请求类, 当noRefech为true时，不做未授权重试机制
-    request(params, noRefetch) {
+    request(params, noRefetch = true) {
         var that = this,
             url=this.baseRestUrl + params.url;
         if(!params.type){
