@@ -25,6 +25,7 @@
     /* width:581rpx; */
     height:74rpx;
     position: relative;
+    background:#D5D3D3;
     flex:1;
 }
 .item-block{
@@ -41,6 +42,7 @@
     display:flex;
     align-items:center; 
     z-index:99; 
+  
 }
 .item-back{
     width:84rpx;

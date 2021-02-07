@@ -55,6 +55,7 @@
     <my-modal
       showModal="{{showModal}}"
       modalInfo="{{modalInfo}}"
+      markerId="{{markerId}}"
       bind:onCancel="onCancel"
       bind:handleDetail="handleDetail"
       bind:goHere="goHere"

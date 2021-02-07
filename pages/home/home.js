@@ -1,4 +1,5 @@
-
+import { Api } from '../../utils/api';
+const api = new Api();
 
 Page({
   /**   * 页面的初始数据   */
@@ -14,6 +15,7 @@ Page({
     userLatitude:'',
     userLongitude:'',
     scale:20,
+    markerId:1,
     polylineStyle: {
          
     },
@@ -109,6 +111,7 @@ Page({
       longitude:  110.493182,
       width: 30,
       height: 30,
+      detailId:1
     },
     {
       iconPath: "/images/baileqiao.png",
@@ -118,7 +121,8 @@ Page({
       latitude: 24.774071,
       longitude:  110.493574,
       width:40,
-      height:40
+      height:40,
+      detailId:3
     },
     {
       iconPath: "/images/lianxinqiao.png",
@@ -128,7 +132,8 @@ Page({
       latitude: 24.774281,
       longitude:  110.492168,
       width:40,
-      height:40
+      height:40,
+      detailId:2
     },
     {
       iconPath: "/images/xijieta.png",
@@ -138,7 +143,8 @@ Page({
       latitude: 24.774953,
       longitude: 110.493552,
       width:40,
-      height:40
+      height:40,
+      detailId:4
     },
     {
       iconPath: "/images/yuge.png",
@@ -148,7 +154,8 @@ Page({
       latitude: 24.774315,
       longitude: 110.492908,
       width:40,
-      height:40
+      height:40,
+      detailId:6
     },
     {
       iconPath: "/images/jiashan.png",
@@ -158,7 +165,8 @@ Page({
       latitude: 24.774666,
       longitude: 110.492769,
       width:40,
-      height:40
+      height:40,
+      detailId:7
     },
     {
       iconPath: "/images/paifang.png",
@@ -168,7 +176,8 @@ Page({
       latitude: 24.773833,
       longitude: 110.493938,
       width:40,
-      height:40
+      height:40,
+      detailId:8
     },
     {
       iconPath: "/images/zhuangyuanmen.png",
@@ -178,7 +187,8 @@ Page({
       latitude: 24.774227,
       longitude: 110.492662,
       width:40,
-      height:40
+      height:40,
+      detailId:5
     }
   ],
   onReady(){
@@ -243,6 +253,7 @@ Page({
     })  
   },
   goHere(event){
+    console.log('event',event)
     const {detail:id} = event;
     const currentMarker = this.default_markers.find(item=>item.id === id);
     console.log(currentMarker);
@@ -298,11 +309,26 @@ Page({
   onMarkerTap(event){
     const {markerId} = event.detail;
     const {default_markers} = this;
-    const modalInfo = default_markers.find(item=>item.id === markerId);
-    this.setData({
-      showModal:true,
-      modalInfo
-    })
+    const {detailId,id} = default_markers.find(item=>item.id === markerId);
+    console.log(detailId);
+    if(detailId){
+      api.getScenicById(detailId,(modalInfo)=>{
+        console.log(modalInfo);
+        this.setData({
+          showModal:true,
+          modalInfo,
+          markerId:id
+        }) 
+      })
+    }
+    else{
+      this.setData({
+        showModal:true,
+        modalInfo:{},
+        markerId:id
+      })
+    }
+    
   },
   moveToLocation(){
     const {userLongitude,userLatitude} = this.data;

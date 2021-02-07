@@ -8,10 +8,10 @@
     </view>
   </view> -->
   <view class="modal-content">
-    <image src="{{modalInfo.image}}"></image>
+    <image src="{{modalInfo.items[0].path}}"></image>
   </view>
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>
-    <view class="btn-confirm" bindtap="goHere" data-id="{{modalInfo.id}}">到这里去</view>
+    <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">到这里去</view>
   </view>
 </view>

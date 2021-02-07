@@ -10,6 +10,10 @@ Component({
       modalInfo:{
         type:Object,
         value:{}
+      },
+      markerId:{
+        type:Number,
+        value:1
       }
     },
     methods: {

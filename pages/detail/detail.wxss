@@ -13,6 +13,9 @@
     position:relative;
     z-index: 40;
 }
+.detail-swiper{
+    height:100%;
+}
 .detail-image .title{
     position: absolute;
     width:100%;

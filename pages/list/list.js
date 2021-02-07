@@ -1,28 +1,23 @@
+import { Api } from '../../utils/api';
+const api = new Api();
 Page({
     data:{
-      list:[
-          {
-            path:'/images/list.png',
-            title:'百乐桥'
-          },
-          {
-            path:'/images/list.png',
-            title:'渔歌文化广场'
-          },
-          {
-            path:'/images/list.png',
-            title:'益田西街主牌坊门'
-          }
-      ]
+      list:[]
     },
     onLoad(){
-
+      api.getScenicList((list)=>{
+        this.setData({
+          list
+        })
+      })
     },
     onReady(){
     },
-    handleDetail(){
+    handleDetail(event){
+       console.log(event);
+       const {id} = event.currentTarget.dataset;
         wx.navigateTo({
-            url:'/pages/detail/detail'
+            url:`/pages/detail/detail?id=${id}`
         })  
     }
 })

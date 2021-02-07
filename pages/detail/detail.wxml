@@ -2,19 +2,29 @@
 <view class="page">
     <view class="detail">
         <view class="detail-image">
-            <image src="/images/detail.png"></image>   
-            <view class="title">古戏台</view>
+            <swiper class="detail-swiper"  
+            indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoPlay}}"
+            >
+                <block wx:for="{{detail.items}}" wx:key="*this">
+                    <swiper-item>
+                        <image src="{{item.path}}" lazy-load="true">
+                        </image>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <view class="title">{{detail.title}}</view>
         </view>
         <view class="detail-info">
             <custom-video></custom-video>
             <scroll-view scroll-y="{{true}}" class="detail-info-scroll">
                 <view class="detail-info-text">
                     <p>
-                        每个有历史的城市，都有一段特色的街区，它承载者着名人掌故，商贾繁华，是这座城市历史的缩影，代表着一方地域的生活方式。
+                        {{detail.detail}}
                     </p>
                 </view>
             </scroll-view>
-            <image class="detail-bottom-image" src="/images/detail_center_bg.png"></image>
+            <image class="detail-bottom-image" src="{{detail.detail_bg}}"></image>
         </view>
     </view>
     <banner-block is="banner"></banner-block>
