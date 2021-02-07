@@ -1,4 +1,4 @@
-<import src="../tpls/banner/banner-tpl.wxml"/>
+
 <view class="page">
     <view class="detail">
         <view class="detail-image">
@@ -6,7 +6,8 @@
             <view class="title">古戏台</view>
         </view>
         <view class="detail-info">
-            <scroll-view scroll-y="{{true}}">
+            <custom-video></custom-video>
+            <scroll-view scroll-y="{{true}}" class="detail-info-scroll">
                 <view class="detail-info-text">
                     <p>
                         每个有历史的城市，都有一段特色的街区，它承载者着名人掌故，商贾繁华，是这座城市历史的缩影，代表着一方地域的生活方式。
@@ -16,5 +17,5 @@
             <image class="detail-bottom-image" src="/images/detail_center_bg.png"></image>
         </view>
     </view>
-    <template is="banner"></template>
+    <banner-block is="banner"></banner-block>
 </view>

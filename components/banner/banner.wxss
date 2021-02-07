@@ -1,0 +1,16 @@
+.banner{
+  position: fixed;
+  bottom:18rpx;
+  width:100%;
+  z-index:999;
+  padding:0 22rpx;
+  box-sizing: border-box;
+  height:140rpx;
+}
+.banner-swiper{
+  height:100%;
+}
+.banner image{
+   width:100%;
+   height:140rpx;  
+}

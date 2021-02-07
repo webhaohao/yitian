@@ -7,7 +7,6 @@
  * @FilePath: \catseefun\pages\home\home.wxml
 -->
 <!--test-->
-<import src="../tpls/banner/banner-tpl.wxml"/>
 
 <view class="page">
     <view class="search-box">
@@ -36,8 +35,7 @@
             </view>
           </block>
         </scroll-view>
-      </view>
-    <template is="banner"></template>
+    </view>
     <map
         id="mapId"
         class="map"
@@ -54,12 +52,13 @@
         bindlabeltap="onLabelTap"
     >
     </map>
-    <my-modal 
-      showModal="{{showModal}}" 
-      modalInfo="{{modalInfo}}"  
+    <my-modal
+      showModal="{{showModal}}"
+      modalInfo="{{modalInfo}}"
       bind:onCancel="onCancel"
       bind:handleDetail="handleDetail"
       bind:goHere="goHere"
     >
     </my-modal>
+    <banner-block></banner-block>
 </view>

@@ -1,4 +1,4 @@
-@import "../tpls/banner/banner-tpl.wxss";
+/* @import "../tpls/banner/banner-tpl.wxss"; */
 .page{
     width: 100%;
     height: 100vh;  

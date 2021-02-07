@@ -2,6 +2,7 @@
   "navigationBarTitleText": "yitian",
   "navigationStyle": "custom",
   "usingComponents": {
-    "my-modal": "/components/modal/modal"
+    "my-modal": "/components/modal/modal",
+    "banner-block":"/components/banner/banner"
   }
 }

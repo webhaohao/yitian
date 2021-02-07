@@ -1,0 +1,18 @@
+/* components/customVideo/customVideo.wxss */
+.custom-video{
+   padding:47rpx;
+   display:flex;
+   align-items: center;
+   box-sizing: border-box;
+}
+.video-slider{
+  flex:1;
+}
+.play-btn{
+  padding-right:29rpx;
+  height:45rpx;
+}
+.play-btn-image{
+   width:45rpx;
+   height:45rpx;
+}

@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "detail"
+  "navigationBarTitleText": "detail",
+  "usingComponents": {
+    "banner-block":"/components/banner/banner",
+    "custom-video":"/components/customVideo/customVideo"
+  }
 }

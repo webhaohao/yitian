@@ -1,0 +1,9 @@
+<!--components/customVideo/customVideo.wxml-->
+<view class="custom-video">
+    <view class="play-btn">
+      <image class="play-btn-image" src="/images/play_btn.png"></image>
+    </view>
+    <view class="video-slider">
+      <van-slider value="50"  inactive-color="#ddd"/>
+    </view>
+</view>
