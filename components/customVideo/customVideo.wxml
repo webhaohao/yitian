@@ -1,9 +1,10 @@
 <!--components/customVideo/customVideo.wxml-->
 <view class="custom-video">
     <view class="play-btn">
-      <image class="play-btn-image" src="/images/play_btn.png"></image>
+      <image class="play-btn-image"  data-src="{{videoSource}}" wx:if="{{pause}}" bindtap="audioPlay" src="/images/play_btn.png"></image>
+      <image class="play-btn-image"  wx:if="{{playing}}" bindtap="audioPause" src="/images/pause.png"></image>
     </view>
     <view class="video-slider">
-      <van-slider value="50"  inactive-color="#ddd"/>
+      <van-slider disabled="{{true}}" value="{{sliderValue}}" step="{{sliderStep}}" active-color="#4a4a4a" inactive-color="#626262"/>
     </view>
 </view>

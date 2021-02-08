@@ -49,16 +49,21 @@ Page({
         type:'supermarket',
         active:false
       },
-      // {
-      //   path:'/images/root.png',
-      //   type:'root',
-      //   active:false
-      // },
-      // {
-      //   path:'/images/mdownload.png',
-      //   type:'mdownload',
-      //   active:false
-      // }
+      {
+        path:'/images/m_download.png',
+        type:'MD',
+        active:false
+      },
+      {
+        path:'/images/hotel.png',
+        type:'hotel',
+        active:false
+      },
+      {
+        path:'/images/root_marker.png',
+        type:'root',
+        active:false
+      },
     ] 
   },
   default_markers:[
@@ -189,6 +194,36 @@ Page({
       width:40,
       height:40,
       detailId:5
+    },
+    {
+      iconPath: "/images/root_marker.png",
+      image:'/images/mark-bg-1.png',
+      type:'root',
+      id: 13,
+      latitude: 24.775227,
+      longitude: 110.492662,
+      width:30,
+      height:30
+    },
+    {
+      iconPath: "/images/m_download.png",
+      image:'/images/mark-bg-1.png',
+      type:'MD',
+      id: 14,
+      latitude: 24.775427,
+      longitude: 110.492662,
+      width:30,
+      height:30
+    },
+    {
+      iconPath: "/images/hotel.png",
+      image:'/images/mark-bg-1.png',
+      type:'hotel',
+      id: 15,
+      latitude: 24.776227,
+      longitude: 110.492662,
+      width:30,
+      height:30
     }
   ],
   onReady(){
@@ -341,6 +376,11 @@ Page({
       });
     }
     
+  },
+  onShow(){
+    this.setData({
+      toggleRoutes:false
+    })
   },
   // 分享效果
   onShareAppMessage () {

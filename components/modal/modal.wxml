@@ -8,7 +8,7 @@
     </view>
   </view> -->
   <view class="modal-content">
-    <image src="{{modalInfo.items[0].path}}"></image>
+    <image mode="aspectFill" src="{{modalInfo.items[0].path}}"></image>
   </view>
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>

@@ -16,7 +16,7 @@
             <view class="title">{{detail.title}}</view>
         </view>
         <view class="detail-info">
-            <custom-video></custom-video>
+            <custom-video videoSource="{{detail.sounds}}" bind:audioPlay="audioPlay"></custom-video>
             <scroll-view scroll-y="{{true}}" class="detail-info-scroll">
                 <view class="detail-info-text">
                     <p>

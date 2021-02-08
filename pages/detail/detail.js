@@ -20,6 +20,9 @@ Page({
     },
     onReady(){
        
-    }
+    },
+    audioPlay(event){
+
+    },
 
 })
