@@ -14,6 +14,10 @@ Component({
       markerId:{
         type:Number,
         value:1
+      },
+      type:{
+        type:String,
+        value:''
       }
     },
     methods: {

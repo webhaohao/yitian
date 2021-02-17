@@ -59,6 +59,7 @@
       bind:onCancel="onCancel"
       bind:handleDetail="handleDetail"
       bind:goHere="goHere"
+      type="{{type}}"
     >
     </my-modal>
     <banner-block></banner-block>

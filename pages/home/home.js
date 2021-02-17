@@ -4,6 +4,7 @@ const api = new Api();
 Page({
   /**   * 页面的初始数据   */
   data: {
+    type:'',
     latitude: 24.774812,
     longitude: 110.492977,
     subkey:'DT5BZ-4JO6P-GLND5-LJDT5-ID653-TVF4Z',
@@ -344,7 +345,7 @@ Page({
   onMarkerTap(event){
     const {markerId} = event.detail;
     const {default_markers} = this;
-    const {detailId,id} = default_markers.find(item=>item.id === markerId);
+    const {detailId,id,type} = default_markers.find(item=>item.id === markerId);
     console.log(detailId);
     if(detailId){
       api.getScenicById(detailId,(modalInfo)=>{
@@ -352,7 +353,8 @@ Page({
         this.setData({
           showModal:true,
           modalInfo,
-          markerId:id
+          markerId:id,
+          type
         }) 
       })
     }
@@ -360,7 +362,8 @@ Page({
       this.setData({
         showModal:true,
         modalInfo:{},
-        markerId:id
+        markerId:id,
+        type
       })
     }
     

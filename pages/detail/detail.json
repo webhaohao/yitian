@@ -2,6 +2,7 @@
   "navigationBarTitleText": "detail",
   "usingComponents": {
     "banner-block":"/components/banner/banner",
-    "custom-video":"/components/customVideo/customVideo"
+    "custom-video":"/components/customVideo/customVideo",
+    "language":"/components/language/language"
   }
 }

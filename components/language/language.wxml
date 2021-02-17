@@ -1,0 +1,11 @@
+<!-- language select-->
+<view class="language-select">
+    <image src="/images/language.png"  class="language-select-btn" bindtap="handleLanguageSelect"></image>
+    <view class="language-list">
+        <view class="language-list-item" hidden="{{!isShowLangItems}}">
+            <image src="/images/China.png"></image>
+            <image src="/images/Japan.png"></image>
+            <image src="/images/USA.png"></image>
+        </view>    
+    </view>
+</view>

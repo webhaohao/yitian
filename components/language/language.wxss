@@ -1,0 +1,20 @@
+.language-select{
+   position:fixed;
+   right:14rpx;
+   top:50%;
+   z-index:9999;
+}
+.language-select-btn{
+  width:99rpx;
+  height:99rpx;
+}
+.language-list-item {
+   display:flex;
+   flex-direction: column;
+   align-items:center;
+}
+.language-list-item image{
+   width:64rpx;
+   height:47rpx;
+   margin-bottom:12rpx;
+}

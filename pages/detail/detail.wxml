@@ -28,4 +28,5 @@
         </view>
     </view>
     <banner-block is="banner"></banner-block>
+    <language></language>
 </view>

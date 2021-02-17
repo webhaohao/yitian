@@ -8,10 +8,24 @@
     </view>
   </view> -->
   <view class="modal-content">
-    <image mode="aspectFill" src="{{modalInfo.items[0].path}}"></image>
+    <view class="modal-content-wrapper">
+      <image mode="aspectFill" src="{{modalInfo.items[0].path}}"></image>
+      <text class="title">{{modalInfo.title}}</text>
+    </view>
   </view>
-  <view class="modal-footer">
-    <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>
-    <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">到这里去</view>
-  </view>
+  <block wx:if="{{type === 'scenic'}}">
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>
+      <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">到这里去</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="modal-footer">
+      <!-- <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view> -->
+      <view class="single-btn" bindtap="goHere" data-id="{{markerId}}">
+        <image class="arrow-icon" src="/images/arrow_btn.png"></image>
+        <text>到这里去</text>
+      </view>
+    </view>
+  </block>
 </view>

@@ -36,15 +36,32 @@
 }
 
 .modal-content {
-  padding: 27rpx;
+  padding: 27rpx 27rpx 0 27rpx;
   width:100%;
   height:300rpx;
   box-sizing: border-box;
 }
-
+.modal-content-wrapper{
+  position: relative;
+  height:100%;
+  box-sizing: border-box;
+}
 .modal-content image{
   width:100%;
   height:100%;
+}
+.modal-content .title{
+  font-size:28rpx;
+  color:#fff;
+  position:absolute;
+  width:100%;
+  bottom:0;
+  left:0;
+  height:45rpx;
+  line-height:45rpx;
+  background: rgba(0,0,0,.7);
+  padding:0 10rpx;
+  box-sizing: border-box;
 }
 
 .modal-input {
@@ -91,4 +108,16 @@ input-holder {
   width: 50%;
   color: #666;
   text-align: center;
+}
+.single-btn{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.arrow-icon{
+   width:35rpx;
+   height:46rpx;
+   margin-right:24rpx;
 }
