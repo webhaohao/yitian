@@ -1,0 +1,7 @@
+<!--pages/search/search.wxml-->
+<view class="search-page">
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+  <van-cell-group>
+    <van-cell title="景点标题"></van-cell>
+  </van-cell-group>
+</view>

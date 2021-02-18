@@ -380,6 +380,11 @@ Page({
     }
     
   },
+  jumpSearch(){
+    wx.navigateTo({
+      url:`/pages/search/search`
+    })  
+  },
   onShow(){
     this.setData({
       toggleRoutes:false
