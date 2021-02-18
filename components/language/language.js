@@ -1,6 +1,20 @@
 Component({
   data: {
-      isShowLangItems:false
+    isShowLangItems: false,
+    languages: [
+      {
+        value: 'Chinese',
+        icon:'/images/China.png'
+      },
+      {
+        value: 'Japan',
+        icon: '/images/Japan.png'
+      },
+      {
+        value: 'English',
+        icon: '/images/USA.png'
+      },
+    ]
   },
   properties: {
     // showModal: {

@@ -8,13 +8,15 @@
   width:99rpx;
   height:99rpx;
 }
-.language-list-item {
+.language-list {
    display:flex;
    flex-direction: column;
    align-items:center;
 }
-.language-list-item image{
-   width:64rpx;
-   height:47rpx;
+.language-list-item{
    margin-bottom:12rpx;
+}
+.language-list-item image{
+    width:64rpx;
+   height:47rpx;
 }

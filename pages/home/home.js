@@ -235,7 +235,7 @@ Page({
   },
 
   onLoad() {
-    this.mapCtx = wx.createMapContext('mapId')
+    this.mapCtx = wx.createMapContext('mapId');
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
     // })
