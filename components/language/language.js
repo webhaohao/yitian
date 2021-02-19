@@ -1,3 +1,5 @@
+let app = new getApp();
+
 Component({
   data: {
     isShowLangItems: false,
@@ -27,12 +29,18 @@ Component({
     // }
   },
   methods: {
-    handleLanguageSelect(){
+    openLanguageSelect(){
         const {isShowLangItems}  = this.data;
         this.setData({
           isShowLangItems:!isShowLangItems
         })
     },
+    handleLanguageSelect(event) {
+      const { value } = event.currentTarget.dataset;
+      app.globalData.language = value || 'Chinese';
+      this.triggerEvent('handleLanguageSelect', value, {});
+      this.openLanguageSelect();
+    }
   }
 
 })

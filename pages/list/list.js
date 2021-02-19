@@ -18,6 +18,11 @@ Page({
        const {id} = event.currentTarget.dataset;
         wx.navigateTo({
             url:`/pages/detail/detail?id=${id}`
-        })  
+        })
+    },
+    handleLanguageSelect(event) {
+      console.log('eventList', event);
+      const { detail:languageValue } = event;
+      console.log(languageValue);
     }
 })

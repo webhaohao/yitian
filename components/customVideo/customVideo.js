@@ -37,7 +37,6 @@ Component({
       audioContext.src = src;
       audioContext.play();
       audioContext.onPlay(() => {
-          console.log('onPlay')
           this.setData({
             pause: false,
             playing: true,
@@ -45,13 +44,11 @@ Component({
           })
       })
       audioContext.onCanplay(() => {
-        console.log('onCanplay')
-        console.log('audioContext.duration',audioContext.duration)
         setTimeout(() => {
           this.setData({
             audioDuration:audioContext.duration
           })
-         
+
         }, 500)
 
         this.audioStatus();

@@ -12,10 +12,10 @@
                     </view>
                     <view class="item-back">
                         <image src="/images/back.png"></image>
-                    </view>    
+                    </view>
                 </view>
             </view>
         </block>
     </view>
-    <language></language>
+    <language bind:handleLanguageSelect="handleLanguageSelect"></language>
 </view>

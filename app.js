@@ -3,10 +3,7 @@
 
 App({
   globalData:{
-      catList:[],
-      selectedCatInfo:{
-        
-      }
+      language:'Chinese'
   },
   onLaunch: function () {
       // const token = new Token();
@@ -14,6 +11,6 @@ App({
   },
 
   onShow:function(){
-  
+
   },
 })
