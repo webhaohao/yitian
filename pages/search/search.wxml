@@ -1,7 +1,13 @@
 <!--pages/search/search.wxml-->
 <view class="search-page">
-  <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
-  <van-cell-group>
-    <van-cell title="景点标题"></van-cell>
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:change="onSearch" />
+  <van-cell-group wx:for="{{markers}}" wx:key="*this">
+    <van-cell 
+      icon="{{item.iconPath}}" 
+      title="{{item.detail.title}}" 
+      is-link
+      link-type="redirectTo"
+      url="../home/home?id={{item.id}}"
+    ></van-cell>
   </van-cell-group>
 </view>

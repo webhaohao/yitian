@@ -4,6 +4,15 @@ class Api extends Base{
     constructor(){
         super();
     }
+    getMarkers(callback){
+        const params = {
+            url:'/v1/markers',
+            sCallback:(data)=>{
+                callback && callback(data);
+            }
+        }  
+        this.request(params);
+    }
     getScenicList(callback){
         const params = {
             url:'/v1/scenic/list',

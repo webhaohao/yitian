@@ -72,7 +72,7 @@ Page({
       iconPath: "/images/restaurant.png",
       image:'/images/mark-bg-1.png',
       type:'restaurant',
-      id: 1,
+      id: 20,
       latitude: 24.774812,
       longitude:  110.492977,
       width: 30,
@@ -82,7 +82,7 @@ Page({
       iconPath: "/images/wc_marker.png",
       image:'/images/mark-bg-1.png',
       type:'wc',
-      id: 2,
+      id: 21,
       latitude: 24.774714,
       longitude: 110.493118,
       width: 30,
@@ -92,7 +92,7 @@ Page({
       iconPath: "/images/tea_marker.png",
       image:'/images/mark-bg-1.png',
       type:'tea',
-      id: 3,
+      id: 22,
       latitude: 24.774992,
       longitude:  110.492871,
       width: 30,
@@ -102,105 +102,18 @@ Page({
       iconPath: "/images/supermarket_marker.png",
       image:'/images/mark-bg-1.png',
       type:'supermarket',
-      id: 4,
+      id: 23,
       latitude: 24.774894,
       longitude:  110.493182,
       width: 30,
       height: 30,
     },
-    {
-      iconPath: "/images/guxitai.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 5,
-      latitude: 24.774996,
-      longitude:  110.493182,
-      width: 30,
-      height: 30,
-      detailId:1
-    },
-    {
-      iconPath: "/images/baileqiao.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 6,
-      latitude: 24.774071,
-      longitude:  110.493574,
-      width:40,
-      height:40,
-      detailId:3
-    },
-    {
-      iconPath: "/images/lianxinqiao.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 7,
-      latitude: 24.774281,
-      longitude:  110.492168,
-      width:40,
-      height:40,
-      detailId:2
-    },
-    {
-      iconPath: "/images/xijieta.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 8,
-      latitude: 24.774953,
-      longitude: 110.493552,
-      width:40,
-      height:40,
-      detailId:4
-    },
-    {
-      iconPath: "/images/yuge.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 9,
-      latitude: 24.774315,
-      longitude: 110.492908,
-      width:40,
-      height:40,
-      detailId:6
-    },
-    {
-      iconPath: "/images/jiashan.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 10,
-      latitude: 24.774666,
-      longitude: 110.492769,
-      width:40,
-      height:40,
-      detailId:7
-    },
-    {
-      iconPath: "/images/paifang.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 11,
-      latitude: 24.773833,
-      longitude: 110.493938,
-      width:40,
-      height:40,
-      detailId:8
-    },
-    {
-      iconPath: "/images/zhuangyuanmen.png",
-      image:'/images/mark-bg-1.png',
-      type:'scenic',
-      id: 12,
-      latitude: 24.774227,
-      longitude: 110.492662,
-      width:40,
-      height:40,
-      detailId:5
-    },
+    
     {
       iconPath: "/images/root_marker.png",
       image:'/images/mark-bg-1.png',
       type:'root',
-      id: 13,
+      id: 24,
       latitude: 24.775227,
       longitude: 110.492662,
       width:30,
@@ -210,7 +123,7 @@ Page({
       iconPath: "/images/m_download.png",
       image:'/images/mark-bg-1.png',
       type:'MD',
-      id: 14,
+      id: 25,
       latitude: 24.775427,
       longitude: 110.492662,
       width:30,
@@ -220,7 +133,7 @@ Page({
       iconPath: "/images/hotel.png",
       image:'/images/mark-bg-1.png',
       type:'hotel',
-      id: 15,
+      id: 26,
       latitude: 24.776227,
       longitude: 110.492662,
       width:30,
@@ -229,9 +142,19 @@ Page({
   ],
   onReady(){
     const {default_markers} = this;
-    this.setData({
-      markers:default_markers
+    api.getMarkers((data)=>{
+      // console.log('marker',data);
+      const _markers = data.map(item=>({
+          ...item,
+          width:40,
+          height:40
+      }))
+      this.default_markers = this.copyArr([..._markers,...default_markers]);
+      this.setData({
+        markers: this.default_markers
+      })
     })
+  
   },
 
   onLoad() {
@@ -345,10 +268,11 @@ Page({
   onMarkerTap(event){
     const {markerId} = event.detail;
     const {default_markers} = this;
-    const {detailId,id,type} = default_markers.find(item=>item.id === markerId);
-    console.log(detailId);
-    if(detailId){
-      api.getScenicById(detailId,(modalInfo)=>{
+    console.log('markerId',markerId);
+    const {id,type} = default_markers.find(item=>item.id === markerId);
+    // console.log(detailId);
+    if(type === 'scenic'){
+      api.getScenicById(id,(modalInfo)=>{
         console.log(modalInfo);
         this.setData({
           showModal:true,

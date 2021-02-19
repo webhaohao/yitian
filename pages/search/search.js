@@ -1,13 +1,18 @@
 // pages/search/search.js
+
+import { Api } from '../../utils/api';
+const api = new Api();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value:""
+    value:"",
+    markers:[]
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,9 +24,25 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    api.getMarkers(markers=>{
+      this.allMarkers = markers;
+      this.setData({
+        markers
+      })
+    })
   },
-
+  onSearch(event){
+    console.log(event);
+    const {detail:value} = event;
+    console.log(value);
+    const {allMarkers} = this;
+    console.log('allMarkers',allMarkers);
+    const _markers = allMarkers.filter(item=>item.detail.title.includes(value));
+    console.log(_markers);
+    this.setData({
+      markers:_markers
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
