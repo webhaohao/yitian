@@ -24,7 +24,8 @@
                     </p>
                 </view>
             </scroll-view>
-            <image class="detail-bottom-image" src="{{detail.detail_bg}}"></image>
+            <image class="detail-top-image" src="/images/cloud.png"></image>
+            <image class="detail-bottom-image" mode="aspectFill" src="{{detail.detail_bg}}"></image>
         </view>
     </view>
     <banner-block is="banner"></banner-block>

@@ -4,6 +4,8 @@
    display:flex;
    align-items: center;
    box-sizing: border-box;
+   position: relative;
+   z-index:20;
 }
 .video-slider{
   flex:1;

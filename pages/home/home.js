@@ -143,7 +143,6 @@ Page({
   onReady(){
     const {default_markers} = this;
     api.getMarkers((data)=>{
-      // console.log('marker',data);
       const _markers = data.map(item=>({
           ...item,
           width:40,
@@ -157,7 +156,12 @@ Page({
   
   },
 
-  onLoad() {
+  onLoad(options) {
+    console.log('options',options);
+    const {id} = options;
+    if(id){
+      this.autoOpenModal(id);
+    }
     this.mapCtx = wx.createMapContext('mapId');
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
@@ -262,13 +266,26 @@ Page({
         })
         // this.mapCtx.moveToLocation();
         callBack && callBack({userLatitude,userLongitude});
+      },
+      fail:()=>{
+        console.log('location fail');
+        // this.wxOpenSetting();
       }
      })
+  },
+  autoOpenModal(markerId){
+    api.getScenicById(markerId,(modalInfo)=>{
+      this.setData({
+        showModal:true,
+        modalInfo,
+        markerId,
+        type:'scenic'
+      }) 
+    })
   },
   onMarkerTap(event){
     const {markerId} = event.detail;
     const {default_markers} = this;
-    console.log('markerId',markerId);
     const {id,type} = default_markers.find(item=>item.id === markerId);
     // console.log(detailId);
     if(type === 'scenic'){
@@ -298,12 +315,21 @@ Page({
       this.mapCtx.moveToLocation();
     }
     else{
+     
       this.getUserLocation(()=>{
         this.mapCtx.moveToLocation();
       });
     }
     
   },
+
+  wxOpenSetting(){
+    console.log('wxOpenSetting');
+    wx.openSetting({ success: res => {
+      console.log(res);
+    } });
+  },
+
   jumpSearch(){
     wx.navigateTo({
       url:`/pages/search/search`

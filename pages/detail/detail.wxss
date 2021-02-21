@@ -53,3 +53,11 @@
     transform:translate(-50%,0);
     opacity:.8;
 }
+.detail-top-image{
+    position: absolute;
+    top:0;
+    left:0;
+    width:644rpx;
+    height:443rpx;
+    z-index:10;
+}
