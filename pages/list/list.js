@@ -23,6 +23,5 @@ Page({
     handleLanguageSelect(event) {
       console.log('eventList', event);
       const { detail:languageValue } = event;
-      console.log(languageValue);
     }
 })
