@@ -1,4 +1,17 @@
 /* pages/search/search.wxss */
+.search-page {
+    background:url('//yitian.happyhao.top/assets/search_bg.png') transparent no-repeat;
+    width:100%;
+    height:100vh;
+    background-size:cover;
+}
 .search-page image{
     display: block;
+}
+.search-page .van-cell{
+    background:transparent;
+}
+
+.search-page .van-search{
+    background: transparent !important;
 }
