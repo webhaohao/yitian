@@ -1,5 +1,17 @@
 import { Api } from '../../utils/api';
+import { IsPtInPoly, ytPonits } from '../../utils/utils';
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
+
 const api = new Api();
+
+const userNotYTMsg = '您当前的所在位置未在景区!';
+
+const polylineStyle = {
+  color: "#FFFFFF",
+  width: 4,
+  borderColor: "#1296DB",
+  borderWidth: 1
+};
 
 Page({
   /**   * 页面的初始数据   */
@@ -17,17 +29,16 @@ Page({
     userLongitude:'',
     scale:20,
     markerId:1,
-    polylineStyle: {
-         
-    },
     route: [
       {
-        points: [],
-        color: "#FFFFFF",
-        width: 4,
-        borderColor: "#1296DB",
-        borderWidth: 1
-      }
+        points: [...ytPonits],
+        ...polylineStyle
+      },
+      // {
+      //   points: [],
+      //  ...polylineStyle
+      // },
+
     ],
     locationTypeList:[
       {
@@ -65,7 +76,7 @@ Page({
         type:'root',
         active:false
       },
-    ] 
+    ]
   },
   default_markers:[
     {
@@ -108,7 +119,7 @@ Page({
       width: 30,
       height: 30,
     },
-    
+
     {
       iconPath: "/images/root_marker.png",
       image:'/images/mark-bg-1.png',
@@ -153,7 +164,7 @@ Page({
         markers: this.default_markers
       })
     })
-  
+
   },
 
   onLoad(options) {
@@ -213,13 +224,12 @@ Page({
     const {detail} = event;
     wx.navigateTo({
       url:`/pages/detail/detail?id=${detail}`
-    })  
+    })
   },
   goHere(event){
     console.log('event',event)
     const {detail:id} = event;
     const currentMarker = this.default_markers.find(item=>item.id === id);
-    console.log(currentMarker);
     const {latitude,longitude} = currentMarker;
     const {userLongitude,userLatitude} = this.data;
     if(userLongitude && userLatitude){
@@ -235,14 +245,20 @@ Page({
     this.setData({
       toggleRoutes:true,
       scale:5,
-      "route[0].points": [
+      route: [
+        ...this.data.route,
         {
-          latitude:userLatitude,
-          longitude:userLongitude
-        },
-        {
-          latitude,
-          longitude,
+          points: [
+            {
+            latitude: userLatitude,
+            longitude: userLongitude
+          },
+          {
+              latitude,
+              longitude,
+            }
+          ],
+          ...polylineStyle
         }
       ]
     })
@@ -280,7 +296,7 @@ Page({
         modalInfo,
         markerId,
         type:'scenic'
-      }) 
+      })
     })
   },
   onMarkerTap(event){
@@ -296,7 +312,7 @@ Page({
           modalInfo,
           markerId:id,
           type
-        }) 
+        })
       })
     }
     else{
@@ -307,21 +323,36 @@ Page({
         type
       })
     }
-    
+
   },
   moveToLocation(){
-    const {userLongitude,userLatitude} = this.data;
-    if(userLongitude && userLatitude){
+    const { userLongitude, userLatitude } = this.data;
+
+    // console.log('isPtInPoly', _isPtInPoly);
+
+    if (userLongitude && userLatitude) {
+      const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
+
+      if (!_isPtInPoly) {
+        // debugger;
+        Notify({ type: 'danger', text: userNotYTMsg});
+        return false;
+      }
       this.mapCtx.moveToLocation();
     }
     else{
-     
-      this.getUserLocation(()=>{
+      this.getUserLocation((userLatitude, userLongitude) => {
+        const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
+        if (!_isPtInPoly) {
+          Notify({ type: 'danger', text: userNotYTMsg});
+          return false;
+        }
         this.mapCtx.moveToLocation();
       });
     }
-    
+
   },
+
 
   wxOpenSetting(){
     console.log('wxOpenSetting');
@@ -333,12 +364,22 @@ Page({
   jumpSearch(){
     wx.navigateTo({
       url:`/pages/search/search`
-    })  
-  },
-  onShow(){
-    this.setData({
-      toggleRoutes:false
     })
+  },
+  onShow() {
+    const { toggleRoutes } = this.data;
+    if (toggleRoutes) {
+      this.setData({
+        toggleRoutes: false,
+        route: [
+          {
+            points: [...ytPonits],
+            ...polylineStyle
+          }
+        ],
+      })
+    }
+
   },
   // 分享效果
   onShareAppMessage () {
@@ -348,6 +389,3 @@ Page({
   }
   }
 })
-    
-
-

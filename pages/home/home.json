@@ -3,6 +3,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "my-modal": "/components/modal/modal",
-    "banner-block":"/components/banner/banner"
+    "banner-block":"/components/banner/banner",
+    "van-notify":"vant-weapp/notify/index"
   }
 }

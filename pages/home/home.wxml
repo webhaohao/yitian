@@ -43,7 +43,7 @@
         longitude="{{longitude}}"
         markers="{{markers}}"
         subkey="{{subkey}}"
-        polyline="{{toggleRoutes ? route : ''}}"
+        polyline="{{route}}"
         layer-style="1"
         scale="{{scale}}"
         show-location
@@ -62,5 +62,6 @@
       type="{{type}}"
     >
     </my-modal>
+    <van-notify id="van-notify"/>
     <banner-block></banner-block>
 </view>
