@@ -285,7 +285,7 @@ Page({
         callBack && callBack({userLatitude,userLongitude});
       },
       fail:()=>{
-        console.log('location fail');
+        // console.log('location fail');
         this.wxGetSetting((wxSetting) => {
           const { authSetting } = wxSetting;
           console.log('authSetting', authSetting);
@@ -303,7 +303,10 @@ Page({
       }
      })
   },
-
+  handleOpensetting(event) {
+    console.log(event);
+    this.onPopupClose();
+  },
   onPopupClose() {
     this.setData({
       popupShow:false
@@ -348,10 +351,11 @@ Page({
   },
   moveToLocation(){
     const { userLongitude, userLatitude } = this.data;
-
+    // debugger;
     // console.log('isPtInPoly', _isPtInPoly);
 
     if (userLongitude && userLatitude) {
+      console.log('123');
       const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
       if (!_isPtInPoly) {
         Notify({ type: 'danger', text: userNotYTMsg});
@@ -360,7 +364,7 @@ Page({
       this.mapCtx.moveToLocation();
     }
     else{
-      this.getUserLocation((userLatitude, userLongitude) => {
+      this.getUserLocation(({ userLatitude, userLongitude }) => {
         const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
         if (!_isPtInPoly) {
           Notify({ type: 'danger', text: userNotYTMsg});
@@ -374,7 +378,7 @@ Page({
 
 
   wxOpenSetting(){
-    console.log('wxOpenSetting');
+    //console.log('wxOpenSetting');
     wx.openSetting({ success: res => {
       console.log(res);
     } });
