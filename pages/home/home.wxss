@@ -1,7 +1,7 @@
 /* @import "../tpls/banner/banner-tpl.wxss"; */
 .page{
     width: 100%;
-    height: 100vh;  
+    height: 100vh;
     position: relative;
 }
 .map{
@@ -48,7 +48,7 @@
 
 .customCallout {
     box-sizing: border-box;
-    /* background-color: #fff; 
+    /* background-color: #fff;
     border-radius: 30px;
     width: 150px;
     height: 40px;
@@ -59,12 +59,12 @@
 }
 .customCallout-image-wrapper{
    width:606rpx;
-   height:286rpx; 
+   height:286rpx;
    background: #d5d3d3;
    border-radius:20rpx;
    padding:18rpx;
    position: relative;
-} 
+}
 .customCallout-image-wrapper  .customCallout-image{
     width:100%;
     height:100%;
@@ -158,4 +158,17 @@
 }
 .search-input input {
     padding-left:35rpx;
+}
+
+.scope-wrapper{
+   padding:20rpx 10rpx;
+   height:200rpx;
+   display:flex;
+   box-sizing:border-box;
+   flex-direction: column;
+}
+.scope-wrapper-handle{
+    display:flex;
+    justify-content:center;
+    width:100%;
 }

@@ -4,6 +4,8 @@
   "usingComponents": {
     "my-modal": "/components/modal/modal",
     "banner-block":"/components/banner/banner",
-    "van-notify":"vant-weapp/notify/index"
+    "van-notify":"vant-weapp/notify/index",
+    "van-popup":"vant-weapp/popup/index",
+    "van-button": "vant-weapp/button/index"
   }
 }

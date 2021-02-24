@@ -28,7 +28,8 @@ Page({
     userLatitude:'',
     userLongitude:'',
     scale:20,
-    markerId:1,
+    markerId: 1,
+    popupShow:false,
     route: [
       {
         points: [...ytPonits],
@@ -285,10 +286,30 @@ Page({
       },
       fail:()=>{
         console.log('location fail');
+        this.wxGetSetting((wxSetting) => {
+          const { authSetting } = wxSetting;
+          console.log('authSetting', authSetting);
+          if (authSetting["scope.userLocation"] === false) {
+            console.log('用户未授权定位');
+            this.setData({
+              popupShow:true
+            })
+            // wx.navigateTo({
+            //   url:'../scope/scope'
+            // });
+          }
+        });
         // this.wxOpenSetting();
       }
      })
   },
+
+  onPopupClose() {
+    this.setData({
+      popupShow:false
+    })
+  },
+
   autoOpenModal(markerId){
     api.getScenicById(markerId,(modalInfo)=>{
       this.setData({
@@ -332,9 +353,7 @@ Page({
 
     if (userLongitude && userLatitude) {
       const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
-
       if (!_isPtInPoly) {
-        // debugger;
         Notify({ type: 'danger', text: userNotYTMsg});
         return false;
       }
@@ -361,6 +380,14 @@ Page({
     } });
   },
 
+  wxGetSetting(callBack) {
+    wx.getSetting({
+      success:res=> {
+        console.log('wxGetSetting', res);
+        callBack(res);
+      }
+    })
+  },
   jumpSearch(){
     wx.navigateTo({
       url:`/pages/search/search`

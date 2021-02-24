@@ -1,0 +1,4 @@
+<!--pages/scope/scope.wxml-->
+<view class="scope-page">
+    <van-button type="primary" open-type="openSetting">点击获取您的位置信息</van-button>
+</view>
