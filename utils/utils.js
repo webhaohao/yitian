@@ -24,14 +24,31 @@ const ytPonits = [
         latitude: '24.774105',
         longitude: '110.492501'
     },
+    // TODO
     {
-        latitude: '24.773920',
-        longitude: '110.493295'
+        latitude: '24.773940',
+        longitude: '110.493579'
     },
     {
-        latitude: '24.774008',
-        longitude: '110.493686'
+        latitude: '24.773755',
+        longitude: '110.493965'
     },
+    {
+        latitude: '24.773896',
+        longitude: '110.494078'
+    },
+    {
+        latitude: '24.774091',
+        longitude: '110.493788'
+    },
+    {
+        latitude: '24.774592',
+        longitude: '110.494174'
+    },
+    // {
+    //     latitude: '24.774008',
+    //     longitude: '110.493686'
+    // },
     {
         latitude: '24.775075',
         longitude: '110.494153'
