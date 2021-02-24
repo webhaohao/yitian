@@ -65,9 +65,8 @@
     <van-notify id="van-notify"/>
     <van-popup show="{{ popupShow }}" bind:close="onPopupClose" position="bottom">
       <view class="scope-wrapper">
-        <text>益田西街导览:</text>
         <view class="scope-wrapper-handle">
-          <van-button size="small" type="primary" open-type="openSetting" bindopensetting="handleOpensetting">点击获取您的位置信息</van-button>
+          <van-button size="small"  open-type="openSetting" bindopensetting="handleOpensetting">点击获取您的位置信息</van-button>
         </view>
       </view>
     </van-popup>

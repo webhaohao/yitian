@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "banner-block":"/components/banner/banner"
+  }
+}

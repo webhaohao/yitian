@@ -33,7 +33,9 @@ Page({
     route: [
       {
         points: [...ytPonits],
-        ...polylineStyle
+        ...polylineStyle,
+        borderWidth:0,
+        width:0
       },
       // {
       //   points: [],

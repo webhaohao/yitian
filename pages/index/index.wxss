@@ -1,0 +1,50 @@
+/* pages/index/index.wxss */
+.index-page{
+  height:100vh;
+  background: url('//yitian.happyhao.top/assets/index-bg.png') no-repeat;
+  background-size:100% 100%;
+}
+.index-image-wrapper{
+  height:600rpx;
+  overflow:hidden;
+}
+.index-image-wrapper image{
+  display:block;
+  width:100%;
+}
+.index-button-group{
+   height:calc(100vh - 600rpx);
+   display:flex;
+   align-items:center;
+   flex-direction: column;
+   padding-top:150rpx;
+   box-sizing:border-box;
+}
+.index-button-group .btn{
+   width:350rpx;
+   height:95rpx;
+   background:rgba(188, 184, 179, .6);
+   border-radius:10rpx;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+}
+
+.index-button-group .btn:first-child{
+  margin-bottom: 46rpx;
+}
+
+.index-button-group .btn image.icon-1{
+   width:46rpx;
+   height:26rpx;
+   margin-right:29rpx;
+}
+.index-button-group .btn image.icon-2{
+  width:30rpx;
+  height:40rpx;
+  margin-right:29rpx;
+}
+.index-button-group .btn image.text-image{
+   width:123rpx;
+   height:30rpx;
+}

@@ -130,10 +130,12 @@
 .scroll-view-item image{
     width:75rpx;
     height:75rpx;
+    opacity: 1;
 }
 .scroll-view-item image.filter{
-    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    filter: grayscale(100%);
+    /* -webkit-filter: grayscale(100%);  */
+    /* filter: grayscale(100%);*/
+    opacity: .6;
 }
 .search-input.hide-search{
     width: 0rpx;
@@ -162,13 +164,22 @@
 
 .scope-wrapper{
    padding:20rpx 10rpx;
-   height:200rpx;
+   height:176rpx;
    display:flex;
    box-sizing:border-box;
-   flex-direction: column;
+   align-items:center;
+   background: url('//yitian.happyhao.top/assets/location_bg.png') no-repeat;
+   background-size:cover;
 }
 .scope-wrapper-handle{
     display:flex;
     justify-content:center;
     width:100%;
+}
+
+.scope-wrapper-handle button{
+    border-radius:10rpx;
+    background: #A0948E;
+    color:#fff;
+    width:403rpx;
 }

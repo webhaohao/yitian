@@ -1,0 +1,17 @@
+<!--pages/index/index.wxml-->
+<view class="index-page">
+    <view class="index-image-wrapper">
+        <image mode="aspectFill" src="//yitian.happyhao.top/assets/index-image.png"></image>
+    </view>
+    <view class="index-button-group" bindtap="jumpMap">
+        <view class="btn">
+            <image class="icon-1" src="/images/icon-1.png"></image>
+            <image class="text-image" src="/images/text-1.png"></image>
+        </view>
+        <view class="btn" bindtap="jumpList">
+          <image class="icon-2" src="/images/icon-2.png"></image>
+          <image class="text-image" src="/images/text-2.png"></image>
+      </view>
+    </view>
+    <banner-block></banner-block>
+</view>
