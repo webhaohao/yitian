@@ -17,8 +17,8 @@
    align-items:center;
 }
 .search-box image{
-    width:101rpx;
-    height:101rpx;
+    width:107rpx;
+    height:117rpx;
 }
 .top-menu{
     position: fixed;
@@ -34,9 +34,19 @@
     bottom:192rpx;
     z-index:999;
 }
+.go-index-page{
+    position:fixed;
+    left:26rpx;
+    bottom: 330rpx;
+    z-index: 999;
+}
+.go-index-page image{
+   width:107rpx;
+   height:118rpx;
+}
 .location-box image{
-    width:101rpx;
-    height:101rpx;
+    width:107rpx;
+    height:118rpx;
 }
 .top-menu image{
     width:101rpx;

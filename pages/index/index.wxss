@@ -11,6 +11,7 @@
 .index-image-wrapper image{
   display:block;
   width:100%;
+  height:100%;
 }
 .index-button-group{
    height:calc(100vh - 600rpx);

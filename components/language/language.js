@@ -9,8 +9,8 @@ Component({
         icon:'/images/China.png'
       },
       {
-        value: 'Japan',
-        icon: '/images/Japan.png'
+        value: 'HK',
+        icon: '/images/HK.jpg'
       },
       {
         value: 'English',

@@ -200,6 +200,11 @@ Page({
       url:'/pages/list/list'
     })
   },
+  goBack(){
+    wx.navigateTo({
+      url:'/pages/index/index'
+    })
+  },
   handleTypeList(event){
     const {type} = event.currentTarget.dataset;
     const {locationTypeList} = this.data;
