@@ -19,7 +19,7 @@ Page({
     type:'',
     latitude: 24.774812,
     longitude: 110.492977,
-    subkey:'DT5BZ-4JO6P-GLND5-LJDT5-ID653-TVF4Z',
+    subkey:'MPGBZ-RCT3D-AAQ4N-PBRKA-SVM7J-OBBBJ',
     markers:[],
     showModal:false,
     isShowSearch:false,
@@ -64,11 +64,11 @@ Page({
         type:'supermarket',
         active:false
       },
-      {
-        path:'/images/m_download.png',
-        type:'MD',
-        active:false
-      },
+      // {
+      //   path:'/images/m_download.png',
+      //   type:'MD',
+      //   active:false
+      // },
       {
         path:'/images/hotel.png',
         type:'hotel',
@@ -133,16 +133,16 @@ Page({
       width:30,
       height:30
     },
-    {
-      iconPath: "/images/m_download.png",
-      image:'/images/mark-bg-1.png',
-      type:'MD',
-      id: 25,
-      latitude: 24.775427,
-      longitude: 110.492662,
-      width:30,
-      height:30
-    },
+    // {
+    //   iconPath: "/images/m_download.png",
+    //   image:'/images/mark-bg-1.png',
+    //   type:'MD',
+    //   id: 25,
+    //   latitude: 24.775427,
+    //   longitude: 110.492662,
+    //   width:30,
+    //   height:30
+    // },
     {
       iconPath: "/images/hotel.png",
       image:'/images/mark-bg-1.png',
