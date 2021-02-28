@@ -7,7 +7,11 @@
  * @FilePath: \catseefun\pages\home\home.wxml
 -->
 <!--test-->
-
+<wxs module="helper">
+  module.exports.includes = function(list,item){
+      return list.indexOf(item) > -1;
+  }
+</wxs>
 <view class="page">
     <view class="search-box">
         <image class="" src="../../images/search.png" bindtap="toggleSearch"></image>
@@ -35,8 +39,8 @@
         <image src="../../images/image_top.png" class="image-shadow pos-img pos-img-bottom"></image>
         <scroll-view scroll-y="true" class="marker-list-scroll"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <block wx:for="{{locationTypeList}}" wx:key="*this">
-            <view class="scroll-view-item" data-type="{{item.type}}" catchtap="handleTypeList">
-              <image class="{{item.active ? '' : 'filter'}}" src="{{item.path}}"></image>
+            <view class="scroll-view-item" data-type="{{item.id}}" catchtap="handleTypeList">
+              <image class="{{helper.includes(activeTypeList,item.id) ? '' : 'filter'}}" src="{{item.icon}}"></image>
             </view>
           </block>
         </scroll-view>
@@ -48,7 +52,7 @@
         longitude="{{longitude}}"
         markers="{{markers}}"
         subkey="{{subkey}}"
-        polyline="{{route}}"
+        polyline="{{toggleRoutes ? route : null}}"
         layer-style="1"
         scale="{{scale}}"
         show-location

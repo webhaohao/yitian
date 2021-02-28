@@ -4,6 +4,17 @@ class Api extends Base{
     constructor(){
         super();
     }
+
+    getMarkersType(callback){
+        const params = {
+            url:'/v1/getMarkersType',
+            sCallback:(data)=>{
+                callback && callback(data);
+            }
+        }  
+        this.request(params);
+    }
+
     getMarkers(callback){
         const params = {
             url:'/v1/markers',

@@ -25,9 +25,9 @@ Page({
    */
   onReady: function () {
     api.getMarkers(markers=>{
-      this.allMarkers = markers;
+      this.allMarkers = markers.filter(item=>item.type === 1);
       this.setData({
-        markers
+        markers:markers.filter(item=>item.type === 1)
       })
     })
   },

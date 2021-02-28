@@ -16,7 +16,7 @@ Component({
         value:1
       },
       type:{
-        type:String,
+        type:Number,
         value:''
       }
     },
