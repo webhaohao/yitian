@@ -96,7 +96,16 @@ input-holder {
   font-size: 34rpx;
   line-height: 86rpx;
 }
-
+.btn-cancel image{
+  width:41rpx;
+  height:27rpx;
+  margin-right:5rpx;
+}
+.btn-confirm image{
+  width:39rpx;
+  height:33rpx;
+  margin-right:5rpx;
+}
 .btn-cancel {
   width: 50%;
   color: #666;

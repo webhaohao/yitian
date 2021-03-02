@@ -15,8 +15,14 @@
   </view>
   <block wx:if="{{type === 1}}">
     <view class="modal-footer">
-      <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">查看详情</view>
-      <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">到这里去</view>
+      <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">
+        <image src="/images/modal-icon-1.png"></image>
+        <text>看一看</text>
+      </view>
+      <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">
+        <image src="/images/modal-icon-2.png"></image>
+        <text>逛一逛</text>
+      </view>
     </view>
   </block>
   <block wx:else>
