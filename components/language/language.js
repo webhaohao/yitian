@@ -5,15 +5,15 @@ Component({
     isShowLangItems: false,
     languages: [
       {
-        value: 'Chinese',
+        value: 'cn',
         icon:'/images/China.png'
       },
       {
-        value: 'HK',
+        value: 'hk',
         icon: '/images/HK.jpg'
       },
       {
-        value: 'English',
+        value: 'en',
         icon: '/images/USA.png'
       },
     ]
