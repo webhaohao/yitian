@@ -3,7 +3,7 @@
 
 App({
   globalData:{
-      language:'Chinese'
+      language:'cn'
   },
   onLaunch: function () {
       // const token = new Token();

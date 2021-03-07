@@ -1,6 +1,6 @@
 /* components/customVideo/customVideo.wxss */
 .custom-video{
-   padding:47rpx;
+   padding:22rpx 47rpx;
    display:flex;
    align-items: center;
    box-sizing: border-box;
@@ -13,6 +13,8 @@
 .play-btn{
   padding-right:29rpx;
   height:45rpx;
+  display:flex;
+  align-items:center;
 }
 .play-btn-image{
    width:45rpx;

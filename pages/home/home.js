@@ -43,7 +43,6 @@ Page({
   },
 
   onLoad(options) {
-    console.log('options',options);
     const {id} = options;
     if(id){
       this.autoOpenModal(id);
@@ -60,11 +59,23 @@ Page({
   getMarkers(){
     const {default_markers} = this;
     api.getMarkers((data)=>{
-      const _markers = data.map(item=>({
-          ...item,
-          width:40,
-          height:40
-      }))
+      const _markers = data.map(item=>{
+        if(item.type === 1){
+          return {
+            ...item,
+            width:40,
+            height:40
+          }
+        }
+        else{
+          return{
+            ...item,
+            width:20,
+            height:20
+          }
+        }
+       
+    })
       this.default_markers = this.copyArr([..._markers,...default_markers]);
       this.setData({
         markers: this.default_markers
@@ -222,40 +233,27 @@ Page({
   },
 
   autoOpenModal(markerId){
-    api.getScenicById(markerId,(modalInfo)=>{
+      const {markers} = this.data;
+      const modalInfo = markers.find(item=>item.id === markerId);
+      const {type} = modalInfo;
       this.setData({
         showModal:true,
         modalInfo,
         markerId,
-        type:'scenic'
+        type
       })
-    })
   },
   onMarkerTap(event){
     const {markerId} = event.detail;
     const {default_markers} = this;
-    const {id,type} = default_markers.find(item=>item.id === markerId);
-    // console.log(detailId);
-    if(type === 1){
-      api.getScenicById(id,(modalInfo)=>{
-        console.log(modalInfo);
-        this.setData({
-          showModal:true,
-          modalInfo,
-          markerId:id,
-          type
-        })
-      })
-    }
-    else{
-      this.setData({
-        showModal:true,
-        modalInfo:{},
-        markerId:id,
-        type
-      })
-    }
-
+    const modalInfo =  default_markers.find(item=>item.id === markerId) || {};
+    const {id,type} = modalInfo;
+    this.setData({
+      showModal:true,
+      modalInfo,
+      markerId:id,
+      type
+    })
   },
   moveToLocation(){
     const { userLongitude, userLatitude } = this.data;
@@ -263,7 +261,6 @@ Page({
     // console.log('isPtInPoly', _isPtInPoly);
 
     if (userLongitude && userLatitude) {
-      console.log('123');
       const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
       if (!_isPtInPoly) {
         Notify({ type: 'danger', text: userNotYTMsg});

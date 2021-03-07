@@ -1,9 +1,10 @@
 <!-- language select-->
+
 <view class="language-select">
-    <image src="/images/language.png"  class="language-select-btn" bindtap="openLanguageSelect"></image>
+    <!-- <image src="/images/language.png"  class="language-select-btn" bindtap="openLanguageSelect"></image> -->
     <view class="language-list" hidden="{{!isShowLangItems}}">
         <view class="language-list-item" wx:for="{{languages}}" data-value="{{item.value}}"  bindtap="handleLanguageSelect" >
-            <image src="{{item.icon}}"></image>
+            <image class="{{item.value === currentLang ? 'active' : ''}}" src="{{item.icon}}"></image>
         </view>
     </view>
 </view>

@@ -1,6 +1,7 @@
 <!--components/customVideo/customVideo.wxml-->
 <view class="custom-video">
     <view class="play-btn">
+      <van-loading type="spinner" size="45rpx" wx-if="{{loading}}"/>
       <image class="play-btn-image"  data-src="{{videoSource}}" wx:if="{{pause}}" bindtap="audioPlay" src="/images/play_btn.png"></image>
       <image class="play-btn-image"  wx:if="{{playing}}" bindtap="audioPause" src="/images/pause.png"></image>
     </view>

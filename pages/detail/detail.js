@@ -1,22 +1,24 @@
 import { Api } from '../../utils/api';
 const api = new Api();
+const app = new getApp();
 Page({
     data:{
         detail:{},
         indicatorDots:true,
-        autoPlay:true
+        autoPlay:true,
+        currentLang:app.globalData.language,
     },
     onLoad(options){
         const {id} = options;
-        api.getScenicById(id,(detail)=>{
+        api.getMarkerById(id,(detail)=>{
             this.setData({
                 detail
             })
+            const {currentLang} = this.data;
             wx.setNavigationBarTitle({
-                title: detail.title || ''
+                title: detail[currentLang].title || ''
             })
         })
-        // console.log('options',options);
     },
     onReady(){
        
@@ -24,5 +26,14 @@ Page({
     audioPlay(event){
 
     },
-
+    handleLanguageSelect(event) {
+        const { detail:currentLang } = event;
+        this.setData({
+          currentLang
+        })
+        const { detail } = this.data;
+        wx.setNavigationBarTitle({
+            title: detail[currentLang].title || ''
+        })
+    }
 })

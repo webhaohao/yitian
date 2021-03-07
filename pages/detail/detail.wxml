@@ -13,15 +13,13 @@
                     </swiper-item>
                 </block>
             </swiper>
-            <view class="title">{{detail.title}}</view>
+            <view class="title">{{detail[currentLang].title}}</view>
         </view>
         <view class="detail-info">
-            <custom-video videoSource="{{detail.sounds}}" bind:audioPlay="audioPlay"></custom-video>
+            <custom-video videoSource="{{detail[currentLang].sounds}}" bind:audioPlay="audioPlay"></custom-video>
             <scroll-view scroll-y="{{true}}" class="detail-info-scroll">
                 <view class="detail-info-text">
-                    <p>
-                        {{detail.detail}}
-                    </p>
+                    <rich-text nodes="{{detail[currentLang].detail}}"></rich-text>
                 </view>
             </scroll-view>
             <image class="detail-top-image" src="/images/cloud.png"></image>
@@ -29,5 +27,5 @@
         </view>
     </view>
     <banner-block is="banner"></banner-block>
-    <language></language>
+    <language bind:handleLanguageSelect="handleLanguageSelect"></language>
 </view>

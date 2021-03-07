@@ -14,9 +14,13 @@
    align-items:center;
 }
 .language-list-item{
-   margin-bottom:12rpx;
+   margin-bottom:9rpx;
 }
 .language-list-item image{
-    width:64rpx;
-   height:47rpx;
+   width:75rpx;
+   height:75rpx;
+   opacity: .6;
+}
+.language-list-item image.active{
+   opacity: 1;
 }

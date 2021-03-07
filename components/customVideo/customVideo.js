@@ -1,6 +1,6 @@
 // components/customVideo/customVideo.js
-const audioContext = wx.createInnerAudioContext();
 let seekPosition = 0;
+
 Component({
 
     /**
@@ -22,19 +22,17 @@ Component({
       value:''
     }
   },
-  // observers: {
-  //   'videoSource': function (val) {
-  //     console.log(val);
-  //   }
-  // },
-  // attached(){
-  //   console.log('videoSource',this.properties.videoSource)
-  // },
   methods:{
     audioPlay(event){
+      const {audioContext} = this;
       console.log(event);
       const {src} = event.currentTarget.dataset;
       audioContext.src = src;
+      this.setData({
+        loading:true,
+        playing:false,
+        pause:false
+      })
       audioContext.play();
       audioContext.onPlay(() => {
           this.setData({
@@ -56,11 +54,12 @@ Component({
     },
      //记录播放状态
     audioStatus() {
+      const {audioContext} = this;
       //音频播放进度更新事件
       audioContext.onTimeUpdate(() => {
         // console.log('audioContext.onTimeUpdate')
         //console.log('audioContext.currentTime / this.data.audioDuration * 100',audioContext.currentTime / this.data.audioDuration * 100);
-        seekPosition = audioContext.currentTime;
+        // seekPosition = audioContext.currentTime;
         this.setData({
           // currentProcess: ss.formatSecToMin(audioContext.currentTime),
           sliderValue: audioContext.currentTime / this.data.audioDuration * 100,
@@ -68,7 +67,7 @@ Component({
       })
       //音频播放结束
       audioContext.onEnded(() => {
-        seekPosition = 0;
+        // seekPosition = 0;
         this.setData({
           sliderValue: 0,
           currentProcess: '00:00',
@@ -79,6 +78,7 @@ Component({
     },
     //播放暂停
     audioPause() {
+      const {audioContext} = this;
       audioContext.pause();
       this.setData({
         pause: true,
@@ -87,6 +87,22 @@ Component({
       })
     },
   },
-
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show() { },
+    hide() { 
+    },
+    resize() { },
+  },
+  lifetimes: {
+    attached() {
+      this.audioContext = wx.createInnerAudioContext();
+      // 在组件实例进入页面节点树时执行
+    },
+    detached() {
+      this.audioContext.destroy();
+      // 在组件实例被从页面节点树移除时执行
+    },
+  }
 
 })

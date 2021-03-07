@@ -10,17 +10,17 @@
   <view class="modal-content">
     <view class="modal-content-wrapper">
       <image mode="aspectFill" src="{{modalInfo.items[0].path}}"></image>
-      <text class="title">{{modalInfo.title}}</text>
+      <text class="title">{{modalInfo['cn'].title}}</text>
     </view>
   </view>
   <block wx:if="{{type === 1}}">
     <view class="modal-footer">
       <view class="btn-cancel" bindtap="onHandleDetail" data-id="{{modalInfo.id}}">
-        <image src="/images/modal-icon-1.png"></image>
+        <image src="/images/modal-icon-2.png"></image>
         <text>看一看</text>
       </view>
       <view class="btn-confirm" bindtap="goHere" data-id="{{markerId}}">
-        <image src="/images/modal-icon-2.png"></image>
+        <image src="/images/modal-icon-1.png"></image>
         <text>逛一逛</text>
       </view>
     </view>

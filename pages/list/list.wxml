@@ -1,5 +1,5 @@
-<view class="page">
-    <view class="list">
+<view class="markers-list-page">
+    <scroll-view class="list" scroll-y>
         <block wx:for="{{list}}" wx:key="*this" >
             <view class="item" data-id="{{item.id}}" bindtap="handleDetail">
                 <view class="item-image">
@@ -7,7 +7,7 @@
                 </view>
                 <view class="item-block">
                     <view class="item-title">
-                        <view class="item-title-text">{{item.title}}</view>
+                        <view class="item-title-text">{{item[currentLang].title}}</view>
                         <image mode="heightFix" src="{{item.title_bg}}"></image>
                     </view>
                     <view class="item-back">
@@ -16,6 +16,7 @@
                 </view>
             </view>
         </block>
-    </view>
-    <language bind:handleLanguageSelect="handleLanguageSelect"></language>
+    </scroll-view>
+    <language bind:handleLanguageSelect="handleLanguageSelect" hiddenOption="hk"></language>
+    <van-toast id="van-toast" />
 </view>

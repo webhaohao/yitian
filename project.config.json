@@ -37,7 +37,7 @@
 		"minifyWXSS": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.14.4",
+	"libVersion": "2.15.0",
 	"appid": "wx65754e13dcdf38a7",
 	"projectname": "yitian",
 	"simulatorType": "wechat",

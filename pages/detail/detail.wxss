@@ -36,9 +36,10 @@
 .detail-info-scroll{
     position: relative;
     z-index:50;
+    height:500rpx;
 }
 .detail-info-text{
-    padding:38rpx 68rpx;
+    padding:0rpx 68rpx 18rpx 68rpx;
     box-sizing: border-box;
     line-height:45rpx;
     font-size:27rpx;

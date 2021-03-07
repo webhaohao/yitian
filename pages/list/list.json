@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "景点列表",
   "usingComponents": {
-    "language":"/components/language/language"
+    "language":"/components/language/language",
+    "van-toast": "vant-weapp/toast/index"
   }
 }

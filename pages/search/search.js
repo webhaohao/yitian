@@ -10,7 +10,8 @@ Page({
    */
   data: {
     value:"",
-    markers:[]
+    markers:[],
+    currentLang:'cn'
   },
   
   /**

@@ -4,7 +4,7 @@
   <van-cell-group wx:for="{{markers}}" wx:key="*this">
     <van-cell 
       icon="{{item.iconPath}}" 
-      title="{{item.detail.title}}" 
+      title="{{item[currentLang].title}}" 
       is-link
       link-type="redirectTo"
       url="../home/home?id={{item.id}}"

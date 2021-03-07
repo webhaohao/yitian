@@ -15,9 +15,13 @@ class Api extends Base{
         this.request(params);
     }
 
-    getMarkers(callback){
+    getMarkers(callback,type){
+        let url = '/v1/markers';
+        if(type){
+            url=`/v1/markers?type=${type}`
+        }
         const params = {
-            url:'/v1/markers',
+            url,
             sCallback:(data)=>{
                 callback && callback(data);
             }
@@ -33,9 +37,9 @@ class Api extends Base{
         }  
         this.request(params);
     }
-    getScenicById(id,callback){
+    getMarkerById(id,callback){
         const params = {
-            url:`/v1/scenic/${id}`,
+            url:`/v1/marker/${id}`,
             sCallback:(data)=>{
                 callback && callback(data);
             }

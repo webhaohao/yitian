@@ -1,6 +1,7 @@
 .list{
     padding:44rpx 21rpx;
     box-sizing:border-box;
+    height:100vh;
 }
 .item{
     margin-bottom:20rpx;
@@ -17,6 +18,10 @@
     border-radius:20rpx 20rpx 1rpx 1rpx;
 }
 
+.markers-list-page{
+    background:url('//yitian.happyhao.top/assets/list-bg.jpg') no-repeat;
+    background-size:cover;
+}
 .item-image image{
     width:100%;
     height:100%;

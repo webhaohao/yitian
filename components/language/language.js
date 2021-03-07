@@ -2,31 +2,38 @@ let app = new getApp();
 
 Component({
   data: {
-    isShowLangItems: false,
+    isShowLangItems:true,
+    currentLang:app.globalData.language,
     languages: [
       {
         value: 'cn',
-        icon:'/images/China.png'
+        icon:'/images/cn.png'
       },
       {
         value: 'hk',
-        icon: '/images/HK.jpg'
+        icon: '/images/hk.png'
       },
       {
         value: 'en',
-        icon: '/images/USA.png'
+        icon: '/images/en.png'
       },
     ]
   },
   properties: {
-    // showModal: {
-    //   type: Boolean,
-    //   value: false
-    // },
-    // modalInfo: {
-    //   type: Object,
-    //   value: {}
-    // }
+    hiddenOption:{
+      type:String,
+      value:""
+    }
+  },
+  lifetimes: {
+    attached() {
+      console.log('this.currentLang',this.data.currentLang);
+      // 在组件实例进入页面节点树时执行
+    },
+    detached() {
+     
+      // 在组件实例被从页面节点树移除时执行
+    },
   },
   methods: {
     openLanguageSelect(){
@@ -37,9 +44,12 @@ Component({
     },
     handleLanguageSelect(event) {
       const { value } = event.currentTarget.dataset;
-      app.globalData.language = value || 'Chinese';
+      app.globalData.language = value || 'cn';
+      this.setData({
+        currentLang:value
+      })
       this.triggerEvent('handleLanguageSelect', value, {});
-      this.openLanguageSelect();
+      //this.openLanguageSelect();
     }
   }
 
