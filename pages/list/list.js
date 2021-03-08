@@ -8,6 +8,8 @@ Page({
       currentLang:app.globalData.language,
     },
     onLoad(){
+    },
+    onReady(){
       Toast.loading({
         message: '加载中...',
         forbidClick: true,
@@ -19,8 +21,6 @@ Page({
           list
         })
       },1)
-    },
-    onReady(){
     },
     handleDetail(event){
        console.log(event);
@@ -35,5 +35,8 @@ Page({
       this.setData({
         currentLang
       })
+    },
+    show(){
+      
     }
 })

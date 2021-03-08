@@ -38,7 +38,7 @@ Page({
     console.log(value);
     const {allMarkers} = this;
     console.log('allMarkers',allMarkers);
-    const _markers = allMarkers.filter(item=>item.detail.title.includes(value));
+    const _markers = allMarkers.filter(item=>item.cn.title.includes(value));
     console.log(_markers);
     this.setData({
       markers:_markers

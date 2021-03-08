@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
     "pages/list/list",
+    "pages/home/home",
     "pages/detail/detail",
-    "pages/search/search",
-    "pages/scope/scope"
+    "pages/search/search"
   ],
   "permission": {
     "scope.userLocation": {

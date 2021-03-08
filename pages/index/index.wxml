@@ -11,7 +11,7 @@
         <view class="btn" bindtap="jumpList">
           <image class="icon-2" src="/images/icon-2.png"></image>
           <image class="text-image" src="/images/text-2.png"></image>
-      </view>
+        </view>
     </view>
     <banner-block></banner-block>
 </view>
