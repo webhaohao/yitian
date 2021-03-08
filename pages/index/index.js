@@ -1,18 +1,22 @@
 // pages/index/index.js
+import { Api } from '../../utils/api';
+const api = new Api();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    banners:[],
+    autoPlay:true,
+    indicatorDots: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getTopBanner()
   },
 
   /**
@@ -27,12 +31,21 @@ Page({
       url: '../home/home',
     })
   },
-
   jumpList(){
     wx.navigateTo({
       url: '../list/list',
     })
   },
+
+  getTopBanner(){
+    api.getTopBanner(banners=>{
+      console.log(banners); 
+      this.setData({
+        banners
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */

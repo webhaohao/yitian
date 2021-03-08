@@ -22,6 +22,12 @@ Component({
       value:''
     }
   },
+  observers:{
+    'videoSource':function(value){
+      console.log('observers',value);
+      this.audioPause();
+    }
+  },
   methods:{
     audioPlay(event){
       const {audioContext} = this;

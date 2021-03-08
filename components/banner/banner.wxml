@@ -8,7 +8,7 @@
             >
                 <block wx:for="{{banners}}" wx:key="*this">
                     <swiper-item>
-                        <image src="{{item.url}}" lazy-load="true">
+                        <image src="{{item.path}}" lazy-load="true">
                         </image>
                     </swiper-item>
                 </block>

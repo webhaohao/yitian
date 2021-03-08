@@ -8,6 +8,9 @@
   height:600rpx;
   overflow:hidden;
 }
+.index-image-wrapper swiper{
+  height:100%;
+}
 .index-image-wrapper image{
   display:block;
   width:100%;

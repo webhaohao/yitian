@@ -4,7 +4,24 @@ class Api extends Base{
     constructor(){
         super();
     }
-
+    getBanner(callback){
+        const params = {
+            url:'/v1/getBanner',
+            sCallback:(data)=>{
+                callback && callback(data);
+            }
+        }  
+        this.request(params);  
+    }   
+    getTopBanner(callback){
+        const params = {
+            url:'/v1/getTopBanner',
+            sCallback:(data)=>{
+                callback && callback(data);
+            }
+        }  
+        this.request(params);  
+    }   
     getMarkersType(callback){
         const params = {
             url:'/v1/getMarkersType',

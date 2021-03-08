@@ -1,17 +1,27 @@
 <!--pages/index/index.wxml-->
 <view class="index-page">
     <view class="index-image-wrapper">
-        <image mode="aspectFill" src="//yitian.happyhao.top/assets/index-image.png"></image>
+        <swiper class="banner-swiper"  
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoPlay}}"
+        >
+            <block wx:for="{{banners}}" wx:key="*this">
+                <swiper-item>
+                    <image src="{{item.path}}" lazy-load="true">
+                    </image>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
-    <view class="index-button-group" bindtap="jumpMap">
-        <view class="btn">
+    <view class="index-button-group" >
+        <view class="btn" bindtap="jumpMap">
             <image class="icon-1" src="/images/icon-1.png"></image>
             <image class="text-image" src="/images/text-1.png"></image>
         </view>
         <view class="btn" bindtap="jumpList">
           <image class="icon-2" src="/images/icon-2.png"></image>
           <image class="text-image" src="/images/text-2.png"></image>
-        </view>
+      </view>
     </view>
     <banner-block></banner-block>
 </view>

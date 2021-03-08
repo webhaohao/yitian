@@ -38,15 +38,19 @@ Page({
   },
   default_markers:[],
   onReady(){
-    this.getMarkersType();
-    this.getMarkers();
+   
   },
 
   onLoad(options) {
     const {id} = options;
     if(id){
-      this.autoOpenModal(id);
+      this.getMarkers(()=>{this.autoOpenModal(id)});
     }
+    else{
+      this.getMarkers();
+    }
+    this.getMarkersType();
+   
     this.mapCtx = wx.createMapContext('mapId');
     // this.mapCtx.on('markerClusterClick', res =>{
     //   console.log('markerClusterClick', res)
@@ -56,7 +60,7 @@ Page({
     // this.bindEvent()
   },
 
-  getMarkers(){
+  getMarkers(callBack){
     const {default_markers} = this;
     api.getMarkers((data)=>{
       const _markers = data.map(item=>{
@@ -80,6 +84,7 @@ Page({
       this.setData({
         markers: this.default_markers
       })
+      callBack && callBack();
     })
   },
 
@@ -234,7 +239,7 @@ Page({
 
   autoOpenModal(markerId){
       const {markers} = this.data;
-      const modalInfo = markers.find(item=>item.id === markerId);
+      const modalInfo = markers.find(item=>item.id == markerId);
       const {type} = modalInfo;
       this.setData({
         showModal:true,
