@@ -2,6 +2,14 @@ import { Api } from '../../utils/api';
 import { IsPtInPoly, ytPonits } from '../../utils/utils';
 import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 
+const QQMapWX = require('../../lib/qqmap-wx-jssdk');
+
+const MapKey = 'MPGBZ-RCT3D-AAQ4N-PBRKA-SVM7J-OBBBJ'
+
+const qqmapsdk = new QQMapWX({
+  key: MapKey // 必填
+});
+
 const api = new Api();
 
 const userNotYTMsg = '您当前的所在位置未在景区!';
@@ -13,13 +21,23 @@ const polylineStyle = {
   borderWidth: 1
 };
 
+const callout = {
+  bgColor: "#ffffff",
+  borderRadius: 3,
+  color:'#4d4d4d',
+  content: "铜像",
+  display: "ALWAYS",
+  fontSize: 9,
+  padding: 4
+}
+
 Page({
   /**   * 页面的初始数据   */
   data: {
     type:1,
     latitude: 24.774812,
     longitude: 110.492977,
-    subkey:'MPGBZ-RCT3D-AAQ4N-PBRKA-SVM7J-OBBBJ',
+    subkey:MapKey,
     markers:[],
     showModal:false,
     isShowSearch:false,
@@ -68,14 +86,25 @@ Page({
           return {
             ...item,
             width:40,
-            height:40
+            height:40,
+            callout:{
+              ...callout,
+              content:item.cn.title 
+            }
           }
         }
         else{
           return{
             ...item,
             width:20,
-            height:20
+            height:20,
+            label:{
+              content:item.cn.title,
+              color:'#4d4d4d',
+              // textAlign:'center',
+              fontSize:10,
+              anchorX: -(0.5 * item.cn.title.length * 10)
+            } 
           }
         }
        
@@ -173,20 +202,57 @@ Page({
     }
   },
   drawPolyline(userLatitude,userLongitude,latitude, longitude){
-    this.setData({
-      toggleRoutes:true,
-      scale:5,
-      "route[0].points":[
-          {
-            latitude: userLatitude,
-            longitude: userLongitude
-          },
-          {
-            latitude,
-            longitude,
+    const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
+    qqmapsdk.direction({
+      mode:'walking',
+      from:{
+        latitude:userLatitude,
+        longitude: userLongitude
+        // latitude: '24.775864',
+        // longitude:'110.493000'
+      },
+      to:{
+        latitude, 
+        longitude
+      },
+      success:(res)=>{
+          console.log('res',res);
+          const {status,result, message} = res;
+          if(status === 0){
+            const {routes} = result;
+            const {polyline} = routes[0];
+            const polylines = this.decompressionPolyline(polyline);
+            console.log(polylines);
+            this.setData({
+              toggleRoutes:true,
+              scale:_isPtInPoly ? 20 : 13,
+              "route[0].points":[
+                 ...polylines
+              ]
+            })
           }
-      ]
+          else{
+            Notify({ type: 'danger', text: message});
+          }
+      },
+      fail(errorRes){
+        Notify({ type: 'danger', text: errorRes.message});
+      }
     })
+   
+  },
+  decompressionPolyline(coors){
+      const pl = [];
+      //坐标解压（返回的点串坐标，通过前向差分进行压缩）
+      const kr = 1000000;
+      for (let i = 2; i < coors.length; i++) {
+        coors[i] = Number(coors[i - 2]) + Number(coors[i]) / kr;
+      }
+      //将解压后的坐标放入点串数组pl中
+      for (let i = 0; i < coors.length; i += 2) {
+        pl.push({ latitude: coors[i], longitude: coors[i + 1] })
+      }
+      return pl;
   },
   copyArr(arr){
     return JSON.parse(JSON.stringify(arr));
@@ -195,7 +261,8 @@ Page({
   },
   getUserLocation(callBack){
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
+      isHighAccuracy:true,
       success:(res)=> {
         // const speed = res.speed
         // const accuracy = res.accuracy
@@ -265,15 +332,15 @@ Page({
     // debugger;
     // console.log('isPtInPoly', _isPtInPoly);
 
-    if (userLongitude && userLatitude) {
-      const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
-      if (!_isPtInPoly) {
-        Notify({ type: 'danger', text: userNotYTMsg});
-        return false;
-      }
-      this.mapCtx.moveToLocation();
-    }
-    else{
+    // if (userLongitude && userLatitude) {
+    //   const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
+    //   if (!_isPtInPoly) {
+    //     Notify({ type: 'danger', text: userNotYTMsg});
+    //     return false;
+    //   }
+    //   this.mapCtx.moveToLocation();
+    // }
+    // else{
       this.getUserLocation(({ userLatitude, userLongitude }) => {
         const _isPtInPoly = IsPtInPoly(userLatitude, userLongitude, ytPonits);
         if (!_isPtInPoly) {
@@ -282,10 +349,32 @@ Page({
         }
         this.mapCtx.moveToLocation();
       });
-    }
+   // }
 
   },
-
+  
+  onBindregionchange(event){
+    console.log('event',event);
+    const {scale} = event.detail;
+    const {markers} = this.data;
+    console.log(markers);
+    const _markers = markers.map(item=>{
+        if(item.type !=1){
+          if(scale < 18){
+            item.label.content = '';
+          }
+          else{
+            item.label.content = item.cn.title;
+          }
+        }
+        return {
+          ...item
+        }
+    });
+    this.setData({
+      markers:[..._markers]
+    }) 
+  },
 
   wxOpenSetting(){
     //console.log('wxOpenSetting');

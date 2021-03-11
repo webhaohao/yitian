@@ -18,7 +18,7 @@
 }
 .search-box image{
     width:107rpx;
-    height:117rpx;
+    height:143rpx;
 }
 .top-menu{
     position: fixed;
@@ -37,16 +37,16 @@
 .go-index-page{
     position:fixed;
     left:26rpx;
-    bottom: 330rpx;
+    bottom: 345rpx;
     z-index: 999;
 }
 .go-index-page image{
    width:107rpx;
-   height:118rpx;
+   height:143rpx;
 }
 .location-box image{
     width:107rpx;
-    height:118rpx;
+    height:143rpx;
 }
 .top-menu image{
     width:101rpx;
@@ -135,11 +135,14 @@
 .scroll-view-item{
     display:flex;
     justify-content:center;
-    padding:25rpx 0rpx;
+    padding-top:20rpx; 
+}
+.scroll-view-item:last-child{
+    padding-bottom:20rpx;
 }
 .scroll-view-item image{
     width:75rpx;
-    height:75rpx;
+    height:105rpx;
     opacity: 1;
 }
 .scroll-view-item image.filter{

@@ -26,6 +26,10 @@ Component({
     'videoSource':function(value){
       console.log('observers',value);
       this.audioPause();
+      this.setData({
+        sliderValue: 0,
+        currentProcess: '00:00'
+      })
     }
   },
   methods:{

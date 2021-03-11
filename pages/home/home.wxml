@@ -56,6 +56,7 @@
         bindmarkertap="onMarkerTap"
         bindcallouttap="onCalloutTap"
         bindlabeltap="onLabelTap"
+        bindregionchange="onBindregionchange"
     >
     </map>
     <my-modal
